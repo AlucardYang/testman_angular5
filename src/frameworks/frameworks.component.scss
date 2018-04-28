@@ -1,0 +1,20 @@
+.clear-both {
+    clear: both;
+}
+
+.right-content {
+    float: right;
+    width: calc(100% - 240px);
+    background-color: #fff;
+}
+
+.testman-content {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-height: 700px;
+}
+
+.frameworks-content {
+    background-color: rgb(246, 246, 246);
+}
+

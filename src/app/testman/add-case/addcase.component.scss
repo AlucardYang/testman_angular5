@@ -1,0 +1,138 @@
+.add-case-content {
+  min-height: 500px;
+}
+
+.add-case-table {
+  width: calc(100% - 40px);
+  margin: 50px 0 20px 20px;
+}
+
+.parameter-td {
+  float: left;
+  position: relative;
+  height: 30px;
+  margin: 5px 0;
+  padding: 5px 10px;
+  color: #333;
+  text-decoration: none;
+  font-weight: normal;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  background: -webkit-linear-gradient(top, #fafafa 0%, #eeeeee 100%);
+  background: -moz-linear-gradient(top, #fafafa 0%, #eeeeee 100%);
+  background: linear-gradient(top, #fafafa 0%, #eeeeee 100%);
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  margin-right: 10px;
+}
+
+.parameter-td:hover {
+  color: #2ea8e5;
+  background: #fff;
+}
+
+.parameter-name {
+  position: relative;
+  width: 25%;
+  float: left;
+  margin-right: 10px;
+}
+
+.parameter-type {
+  width: 10%;
+  float: left;
+  margin: 5px 10px 5px 0;
+}
+
+.parameter-value {
+  width: 15%;
+}
+
+.parameter-desc {
+  width: calc(40% - 40px);
+}
+
+.margin-right-0 {
+  margin-right: 0;
+}
+
+.add-test-case-button {
+  height: 32px;
+  line-height: 22px;
+  background-color: rgba(20, 188, 182, 1);
+  border-radius: 3px;
+  font-size: 14px;
+  color: #fff;
+  outline: none;
+  padding: 5px 20px;
+  border: none;
+  margin-right: 20px;
+}
+
+.add-tes-textarea {
+  resize: none;
+  width: calc(100% - 40px);
+  height: 200px;
+  margin: 20px;
+  border-radius: 3px;
+}
+
+.table-row {
+  width: 100%;
+  height: 30px;
+}
+
+.parent-icon-width {
+  width: 12px;
+  height: 12px;
+}
+
+.expand-icon-position {
+  position: absolute;
+  top: 16px;
+  left: 0;
+}
+
+:host ::ng-deep .ui-dropdown {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+  background: #fafafa;
+  background: -webkit-linear-gradient(top, #fafafa 0%, #eeeeee 100%);
+  background: -moz-linear-gradient(top, #fafafa 0%, #eeeeee 100%);
+  background: linear-gradient(top, #fafafa 0%, #eeeeee 100%);
+}
+
+:host ::ng-deep .ui-dropdown .ui-dropdown-label {
+  display: block;
+  border: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: normal;
+  width: 100%;
+  padding-right: 2.5em;
+  background: #fafafa;
+  background: -webkit-linear-gradient(top, #fafafa 0%, #eeeeee 100%);
+  background: -moz-linear-gradient(top, #fafafa 0%, #eeeeee 100%);
+  background: linear-gradient(top, #fafafa 0%, #eeeeee 100%);
+}
+
+:host ::ng-deep .ui-dropdown .ui-dropdown-trigger {
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 0;
+  cursor: pointer;
+  width: 1.5em;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0 .25em;
+  background: #fafafa;
+  background: -webkit-linear-gradient(top, #fafafa 0%, #eeeeee 100%);
+  background: -moz-linear-gradient(top, #fafafa 0%, #eeeeee 100%);
+  background: linear-gradient(top, #fafafa 0%, #eeeeee 100%);
+}

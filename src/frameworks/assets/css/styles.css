@@ -1,0 +1,80 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '../../../../node_modules/bootstrap/dist/css/bootstrap.css';
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: #333;
+  font-family: 'Microsoft YaHei', 'Arial Narrow', Arial, sans-serif;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.display-inline-block {
+  display: inline-block;
+}
+
+.vertical-align-middle {
+  vertical-align: middle;
+}
+
+.block-middle {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+.over-flow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.float-none {
+  float: none;
+}
+
+/* 业务样式 */
+
+.content-container {
+    padding: 0 6%;
+}
+
+/* 图标样式 */
+
+.icon-wrapper {
+  display: inline-block;
+  vertical-align: middle;
+  color: #333;
+  font-size: 12px;
+  margin-top: -4px;
+}
+
+.icon-wrapper:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+.icon-wrapper span {
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -4px;
+}

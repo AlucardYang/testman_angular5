@@ -1,0 +1,28 @@
+.left-menu {
+  width: 220px;
+  height: 100%;
+  background: #fff;
+  float: left;
+  border: 1px solid #ddd;
+  min-height: 400px;
+  .left-menu-header {
+    height: 56px;
+    line-height: 16px;
+    background-color: rgba(246, 246, 246, 1);
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 20px;
+  }
+  .left-menu-ul {
+    padding: 0 20px;
+    li {
+      height: 46px;
+      line-height: 46px;
+      font-size: 14px;
+      font-weight: bold;
+      box-sizing: border-box;
+      border-bottom: 1px solid #eee;
+    }
+  }
+}

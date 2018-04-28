@@ -1,0 +1,33 @@
+<header class="header-nav">
+  <div class="header-top content-container">
+    <a class="icon-wrapper">
+      <span class="testman-ats-icon-sm"></span>
+      <span>ATS首页</span>
+    </a>
+  </div>
+  <div class="header-guide content-container">
+    <div class="header-guide-left">
+      <a class="icon-wrapper">
+        <span class="testman-ats-icon-md"></span>
+      </a>
+      <span class="block-middle header-guide-line">|</span>
+      <span class="block-middle header-guide-ats-font">ATS</span>
+    </div>
+    <div class="header-guide-user">
+      <a class="icon-wrapper font-size-14">
+        <span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;
+        <span>您好！</span>&nbsp;
+        <a href="javascript:void(0);" class="user-name">郑婷婷</a>&nbsp;&nbsp;
+        <a href="javascript:void(0);">退出</a>
+      </a>
+    </div>
+    <ul class="header-guide-help">
+      <li>
+        <span [ngClass]="{'current': navType === 'help'}" (click)="changeNavType('help')">使用与帮助</span>
+      </li>
+      <li>
+        <span [ngClass]="{'current': navType === 'home'}" (click)="changeNavType('home')">首页</span>
+      </li>
+    </ul>
+  </div>
+</header>
