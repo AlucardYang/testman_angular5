@@ -7,13 +7,13 @@
   <section class="test-case-manage-section">
     <header class="test-case-manage-filter">
       <span class="select-title">创建人：</span>
-      <p-dropdown [options]="cteators" name="cteator" [(ngModel)]="cteator" [style]="{'width':'70px'}" (onChange)="filterCreator($event)"></p-dropdown>
+      <p-dropdown [options]="cteators" name="cteator" [(ngModel)]="cteator" [style]="{'width':'70px'}" (onChange)="onFilter()"></p-dropdown>
       &nbsp;
       <span class="select-title">更新人：</span>
-      <p-dropdown [options]="updators" name="updator" [(ngModel)]="updator" [style]="{'width':'70px'}" (onChange)="filterUpdator($event)"></p-dropdown>
+      <p-dropdown [options]="updators" name="updator" [(ngModel)]="updator" [style]="{'width':'70px'}" (onChange)="onFilter()"></p-dropdown>
       &nbsp;
       <span class="select-title">域：</span>
-      <p-dropdown [options]="regions" name="region" [(ngModel)]="region" [style]="{'width':'160px'}" (onChange)="filterRegion($event)"></p-dropdown>
+      <p-dropdown [options]="regions" name="region" [(ngModel)]="region" [style]="{'width':'160px'}" (onChange)="onFilter()"></p-dropdown>
       &nbsp;
       <p-calendar class="pull-right" [selectionMode]="'range'" [(ngModel)]="updateDate" dateFormat="yy/mm/dd" showButtonBar="true"
         showIcon="true" placeholder="请选择时间过滤" (onSelect)="onSelectDate()"></p-calendar>
@@ -36,32 +36,32 @@
           </ng-template>
         </p-column>
         <p-column [style]="{'width':'calc(49% - 180px)'}" field="url" header="URL">
-            <ng-template let-col let-row="rowData" pTemplate="body">
-                <div class="width-100 over-flow-ellipsis">
-                  <span>{{row[col.field]}}</span>
-                </div>
-              </ng-template>
+          <ng-template let-col let-row="rowData" pTemplate="body">
+            <div class="width-100 over-flow-ellipsis">
+              <span>{{row[col.field]}}</span>
+            </div>
+          </ng-template>
         </p-column>
         <p-column [style]="{'width':'12%'}" field="creator" header="创建人">
-            <ng-template let-col let-row="rowData" pTemplate="body">
-                <div class="width-100 over-flow-ellipsis">
-                  <span>{{row[col.field]}}</span>
-                </div>
-              </ng-template>
+          <ng-template let-col let-row="rowData" pTemplate="body">
+            <div class="width-100 over-flow-ellipsis">
+              <span>{{row[col.field]}}</span>
+            </div>
+          </ng-template>
         </p-column>
         <p-column [style]="{'width':'12%'}" field="updator" header="更新人">
-            <ng-template let-col let-row="rowData" pTemplate="body">
-                <div class="width-100 over-flow-ellipsis">
-                  <span>{{row[col.field]}}</span>
-                </div>
-              </ng-template>
+          <ng-template let-col let-row="rowData" pTemplate="body">
+            <div class="width-100 over-flow-ellipsis">
+              <span>{{row[col.field]}}</span>
+            </div>
+          </ng-template>
         </p-column>
         <p-column [style]="{'width':'12%'}" field="updateTime" header="更新时间">
-            <ng-template let-col let-row="rowData" pTemplate="body">
-                <div class="width-100 over-flow-ellipsis">
-                  <span>{{row[col.field]}}</span>
-                </div>
-              </ng-template>
+          <ng-template let-col let-row="rowData" pTemplate="body">
+            <div class="width-100 over-flow-ellipsis">
+              <span>{{row[col.field]}}</span>
+            </div>
+          </ng-template>
         </p-column>
         <p-column [style]="{'width':'100px'}" header="操作">
           <ng-template let-col let-row="rowData" let-index="rowIndex" pTemplate="body">

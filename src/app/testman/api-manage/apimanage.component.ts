@@ -17,6 +17,7 @@ export class ApiManageComponent implements OnInit {
   region: any = '全部';
   regions: SelectItem[];
   testApis: Array<any> = [];
+  allTestApis: Array<any> = [];
   updateDate: Date = new Date();
   searchText: any = '';
   @ViewChild('dataTable') dataTable;
@@ -64,7 +65,7 @@ export class ApiManageComponent implements OnInit {
         num: 4,
         apiName: '购物车',
         url: '/shop/list',
-        region: 'www.sina.com',
+        region: 'www.baidu.com',
         creator: '郑婷婷',
         updator: '胡媛洁',
         updateTime: '2018/04/20'
@@ -102,41 +103,37 @@ export class ApiManageComponent implements OnInit {
         updateTime: '2018/04/20'
       }
     ];
+    this.allTestApis = JSON.parse(JSON.stringify(this.testApis));
   }
 
-  // 过滤创建人
-  filterCreator(event) {
-    if (event) {
-      const testApis = this.testApis.filter(item => item['creator'] === event['value']);
-      this.dataTable.value = testApis;
+  // 过滤
+  onFilter() {
+    let testApis = this.allTestApis;
+    if (this.cteator !== '全部') {
+      testApis = testApis.filter(item => item['creator'] === this.cteator);
     }
+    if (this.updator !== '全部') {
+      testApis = testApis.filter(item => item['updator'] === this.updator);
+    }
+    if (this.region !== '全部') {
+      testApis = testApis.filter(item => item['region'] === this.region);
+    }
+    if (this.searchText) {
+      testApis = testApis.filter(item => (item['apiName'].indexOf(this.searchText) !== -1) || (item['url'].indexOf(this.searchText) !== -1));
+    }
+    this.testApis = testApis;
+    this.dataTable.value = testApis;
   }
 
-  // 过滤更新人
-  filterUpdator(event) {
-    if (event) {
-      const testApis = this.testApis.filter(item => item['updator'] === event['value']);
-      this.dataTable.value = testApis;
-    }
-  }
-
-  // 过滤域
-  filterRegion(event) {
-    if (event) {
-      const testApis = this.testApis.filter(item => item['region'] === event['value']);
-      this.dataTable.value = testApis;
-    }
+  // 搜索
+  onSearch(event) {
+    this.searchText = event;
+    this.onFilter();
   }
 
   // 选择日期
   onSelectDate() {
     console.log(this.updateDate);
-  }
-
-  // 关键字搜索
-  onSearch(event) {
-    const testApis = this.testApis.filter(item => (item['apiName'].indexOf(event) !== -1) || (item['url'].indexOf(event) !== -1));
-    this.dataTable.value = testApis;
   }
 
   deleteApi(index) {
