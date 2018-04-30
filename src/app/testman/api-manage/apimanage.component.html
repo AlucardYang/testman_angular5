@@ -21,7 +21,7 @@
         showIcon="true" placeholder="请选择时间过滤" (onSelect)="onFilter()" (onClearClick)="onClear()"></p-calendar>
     </header>
     <section class="test-case-table">
-      <p-dataTable #dataTable [value]="testApis" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,20]">
+      <p-dataTable #dataTable [value]="testApis" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,20]">
         <p-column [style]="{'width':'30px'}" selectionMode="multiple"></p-column>
         <p-column [style]="{'width':'50px'}" field="num" header="编号">
           <ng-template let-col let-row="rowData" pTemplate="body">

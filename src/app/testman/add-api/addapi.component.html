@@ -72,7 +72,7 @@
       </div>
       <button class="add-button run-api-button pull-left" type="button" (click)="runApi()">运行</button>
       <button *ngIf="isShowResponse" class="add-button run-api-button pull-left" type="button">保存</button>
-      <button class="add-button run-api-button pull-left" type="button">返回</button>
+      <button class="add-button run-api-button pull-left" type="button" [routerLink]="['/apimanage']">返回</button>
       <div class="clear-both"></div>
     </form>
   </section>

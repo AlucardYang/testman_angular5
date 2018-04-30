@@ -25,7 +25,8 @@ export class AddApiComponent implements OnInit {
   jsonResponse: any;
   apiAddress = '12.32.23.23:8080';
   isShowResponse: Boolean = false;
-  constructor(private router: Router, private testManService: TestManService, private addApiService: AddApiService) {
+  constructor(private router: Router, private testManService: TestManService,
+    private addApiService: AddApiService) {
 
   }
 
@@ -91,13 +92,6 @@ export class AddApiComponent implements OnInit {
     this.jsonResponse = '{"code":"0","is_right":"1","result":{"id":"25","name":"固定分类的商家","desc":"固定分类的商家固定分类的商家","contact":"啊哈哈哈","contact_number":"13450367912","city_company":null,"create_time":"2018-01-0810:44:31","icon":"http://odso6i1fb.bkt.clouddn.com/2018/01/08/0ei047yddljuj0tr.png","free_shipping":null},"message":null}';
     this.isShowResponse = true;
     this.tabType = 'Response';
-    setTimeout(() => {
-      const href = window.location.href;
-      if (href.indexOf('#') !== -1) {
-        window.location.href = href.slice(0, href.indexOf('#')) + '#headerBodyContent';
-      } else {
-        window.location.href = href + '#headerBodyContent';
-      }
-    });
+    this.router.navigate(['addapi'], { fragment: 'headerBodyContent' });
   }
 }

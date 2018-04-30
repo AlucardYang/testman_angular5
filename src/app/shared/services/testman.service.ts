@@ -6,6 +6,7 @@ export class TestManService {
   types: SelectItem[];
   defaults: SelectItem[];
   apiMethods: SelectItem[];
+  members: SelectItem[];
   constructor() {
     this.types = [
       { label: 'String', value: 'String' },
@@ -28,6 +29,14 @@ export class TestManService {
       { label: 'PUT', value: 'PUT' },
       { label: 'DELETE', value: 'DELETE' }
     ];
+
+    this.members = [
+      { label: '全部', value: '全部' },
+      { label: '郑婷婷', value: '郑婷婷' },
+      { label: '黎律', value: '黎律' },
+      { label: '胡媛洁', value: '胡媛洁' },
+      { label: '许春洋', value: '许春洋' }
+  ];
   }
 
   isJSON(str) {

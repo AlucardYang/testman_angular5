@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 
+import { TestManService } from '../../shared/services/testman.service';
 import { ApiManageService } from './apimanage.service';
 
 @Component({
@@ -21,13 +22,13 @@ export class ApiManageComponent implements OnInit {
   updateDate: Date = new Date();
   searchText: any = '';
   @ViewChild('dataTable') dataTable;
-  constructor(private router: Router, private apiManageService: ApiManageService) {
+  constructor(private router: Router, private testManService: TestManService) {
 
   }
 
   ngOnInit() {
-    this.cteators = this.apiManageService.member;
-    this.updators = this.apiManageService.member;
+    this.cteators = this.testManService.members;
+    this.updators = this.testManService.members;
     this.regions = [
       { label: '全部', value: '全部' },
       { label: 'blackpearltest.4009515151.com', value: 'blackpearltest.4009515151.com' },
