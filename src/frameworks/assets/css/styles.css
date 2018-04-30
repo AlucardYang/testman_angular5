@@ -60,6 +60,10 @@ ol {
   margin-right: 10px !important;
 }
 
+.width-100 {
+  width: 100% !important;
+}
+
 /* 业务样式 */
 
 .content-container {
@@ -92,6 +96,10 @@ ol {
   border-radius: 3px;
   margin: 0 3px;
   border-top-left-radius: 0;
+}
+
+.delete-font {
+  color: #f00 !important;
 }
 
 /* 表格样式 */

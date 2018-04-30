@@ -1,0 +1,9 @@
+<div [style.width]="width" class="search-component">
+  <input [style.width]="width" pInputText [(ngModel)]="searchText" type="text" placeholder="请输入关键字搜索">
+  <a class="icon-wrapper search-icon-position" href="javascript:void(0);" (click)="onSearch()">
+    <span class="glyphicon glyphicon-search"></span>
+  </a>
+  <a *ngIf="searchText" class="icon-wrapper clear-icon-position" href="javascript:void(0);" (click)="onClear()">
+    <span class="glyphicon glyphicon-remove"></span>
+  </a>
+</div>

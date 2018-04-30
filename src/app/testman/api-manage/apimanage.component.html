@@ -1,149 +1,74 @@
 <div>
   <header class="manage-header">
-    <span class="display-inline-block">用例管理列表</span>
-    <button class="add-button pull-right" type="button" (click)="goAddcase()">新增用例</button>
+    <span class="display-inline-block">接口管理列表</span>
+    <button class="add-button pull-right" type="button" [routerLink]="['/addapi']">新增接口</button>
     <div class="clear-both"></div>
   </header>
   <section class="test-case-manage-section">
     <header class="test-case-manage-filter">
-      <span class="select-title">创建人:</span>
-      <div class="dropdown block-middle">
-        <button class="btn btn-default dropdown-toggle" type="button" id="cteatorsSelect" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="true">
-          {{cteator}}
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="cteatorsSelect">
-          <li *ngFor="let cteator of cteators;let i= index;">
-            <a href="javascript: void(0);" (click)="changeCteator(cteator)">{{cteator}}</a>
-          </li>
-        </ul>
-      </div>&nbsp;
-      <span class="select-title">更新人:</span>
-      <div class="dropdown block-middle">
-        <button class="btn btn-default dropdown-toggle" type="button" id="updatorsSelect" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="true">
-          {{updator}}
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="updatorsSelect">
-          <li *ngFor="let updator of updators;let i= index;">
-            <a href="javascript: void(0);" (click)="changeUpdator(updator)">{{updator}}</a>
-          </li>
-        </ul>
-      </div>&nbsp;
-      <span class="select-title">分类:</span>
-      <div class="dropdown block-middle">
-        <button class="btn btn-default dropdown-toggle" type="button" id="testType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          {{testType}}
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="testType">
-          <li *ngFor="let testType of testTypes;let i= index;">
-            <a href="javascript: void(0);" (click)="changeTestType(testType)">{{testType}}</a>
-          </li>
-        </ul>
-      </div>&nbsp;
-      <span class="select-title">状态:</span>
-      <div class="dropdown block-middle">
-        <button class="btn btn-default dropdown-toggle" type="button" id="state" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          {{state}}
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="state">
-          <li *ngFor="let state of states;let i= index;">
-            <a href="javascript: void(0);" (click)="changeState(state)">{{state}}</a>
-          </li>
-        </ul>
-      </div>
-      <input class="manage-search form-control pull-right" type="text" placeholder="输入关键字搜索">
-      <input class="manage-search form-control pull-right" type="text" placeholder="日期">
-      <a class="icon-wrapper search-manage-position font-size-16">
-        <span class="glyphicon glyphicon-search"></span>
-      </a>
+      <span class="select-title">创建人：</span>
+      <p-dropdown [options]="cteators" name="cteator" [(ngModel)]="cteator" [style]="{'width':'70px'}" (onChange)="filterCreator($event)"></p-dropdown>
+      &nbsp;
+      <span class="select-title">更新人：</span>
+      <p-dropdown [options]="updators" name="updator" [(ngModel)]="updator" [style]="{'width':'70px'}" (onChange)="filterUpdator($event)"></p-dropdown>
+      &nbsp;
+      <span class="select-title">域：</span>
+      <p-dropdown [options]="regions" name="region" [(ngModel)]="region" [style]="{'width':'160px'}" (onChange)="filterRegion($event)"></p-dropdown>
+      &nbsp;
+      <p-calendar class="pull-right" [selectionMode]="'range'" [(ngModel)]="updateDate" dateFormat="yy/mm/dd" showButtonBar="true"
+        showIcon="true" placeholder="请选择时间过滤" (onSelect)="onSelectDate()"></p-calendar>
+      &nbsp;
+      <search-input class="pull-right" [searchText]="searchText" (search)="onSearch($event)"></search-input>
     </header>
     <section class="test-case-table">
-      <!-- <ul class="data-table">
-        <li class="data-table-header">
-          <div class="data-table-header-num pull-left">
-            <input type="checkbox">
-          </div>
-          <div class="data-table-header-num pull-left">
-            编号
-          </div>
-          <div class="data-table-header-name pull-left">
-            用例名称
-          </div>
-          <div class="data-table-header-name pull-left">
-            接口名称
-          </div>
-          <div class="data-table-header-state pull-left">
-            用例状态
-          </div>
-          <div class="data-table-header-state pull-left">
-            创建人
-          </div>
-          <div class="data-table-header-state pull-left">
-            更新人
-          </div>
-          <div class="data-table-header-name pull-left">
-            更新时间
-          </div>
-          <div class="data-table-header-state pull-left">
-            操作
-          </div>
-        </li>
-        <li *ngFor="let testCase of testCaseList;let i= index;" class="data-table-row">
-          <div class="data-table-header-num pull-left">
-            <input type="checkbox">
-          </div>
-          <div class="data-table-header-num over-flow-ellipsis pull-left">
-            {{testCase?.num}}
-          </div>
-          <div class="data-table-header-name over-flow-ellipsis pull-left">
-            {{testCase?.testCaseName}}
-          </div>
-          <div class="data-table-header-name over-flow-ellipsis pull-left">
-            {{testCase?.apiName}}
-          </div>
-          <div class="data-table-header-state over-flow-ellipsis pull-left">
-            {{testCase?.state}}
-          </div>
-          <div class="data-table-header-state over-flow-ellipsis pull-left">
-            {{testCase?.creator}}
-          </div>
-          <div class="data-table-header-state over-flow-ellipsis pull-left">
-            {{testCase?.updator}}
-          </div>
-          <div class="data-table-header-name over-flow-ellipsis pull-left">
-            {{testCase?.updateTime}}
-          </div>
-          <div class="data-table-header-state over-flow-ellipsis pull-left">
-            <a class="icon-wrapper font-size-16">
-              <span class="glyphicon glyphicon-pencil"></span>
-            </a>
-            <a class="icon-wrapper font-size-16">
-              <span class="glyphicon glyphicon glyphicon-book"></span>
-            </a>
-            <a class="icon-wrapper font-size-16">
-              <span class="glyphicon glyphicon-trash"></span>
-            </a>
-          </div>
-        </li>
-      </ul> -->
-      <p-dataTable [value]="testApis" selectionMode="multiple">
-        <p-column field="num" header="编号">
-          <!-- <ng-template let-col let-testCase="rowData" pTemplate="body">
-            <span [style.color]="testCase[col.field]">{{testCase[col.field]}}</span>
-          </ng-template> -->
+      <p-dataTable #dataTable [value]="testApis" [paginator]="true" [rows]="3" [pageLinks]="3" [rowsPerPageOptions]="[3,10]">
+        <p-column [style]="{'width':'30px'}" selectionMode="multiple"></p-column>
+        <p-column [style]="{'width':'50px'}" field="num" header="编号">
+          <ng-template let-col let-row="rowData" pTemplate="body">
+            <span>{{row[col.field]}}</span>
+          </ng-template>
         </p-column>
-        <p-column field="testCaseName" header="用例名称"></p-column>
-        <p-column field="apiName" header="接口名称"></p-column>
-        <p-column field="state" header="用例状态"></p-column>
-        <p-column field="creator" header="创建人"></p-column>
-        <p-column field="updator" header="更新人"></p-column>
-        <p-column field="updateTime" header="更新时间"></p-column>
-        <p-column styleClass="col-button" header="操作"></p-column>
+        <p-column [style]="{'width':'15%'}" field="apiName" header="接口名称">
+          <ng-template let-col let-row="rowData" pTemplate="body">
+            <div class="width-100 over-flow-ellipsis">
+              <span>{{row[col.field]}}</span>
+            </div>
+          </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'calc(49% - 180px)'}" field="url" header="URL">
+            <ng-template let-col let-row="rowData" pTemplate="body">
+                <div class="width-100 over-flow-ellipsis">
+                  <span>{{row[col.field]}}</span>
+                </div>
+              </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'12%'}" field="creator" header="创建人">
+            <ng-template let-col let-row="rowData" pTemplate="body">
+                <div class="width-100 over-flow-ellipsis">
+                  <span>{{row[col.field]}}</span>
+                </div>
+              </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'12%'}" field="updator" header="更新人">
+            <ng-template let-col let-row="rowData" pTemplate="body">
+                <div class="width-100 over-flow-ellipsis">
+                  <span>{{row[col.field]}}</span>
+                </div>
+              </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'12%'}" field="updateTime" header="更新时间">
+            <ng-template let-col let-row="rowData" pTemplate="body">
+                <div class="width-100 over-flow-ellipsis">
+                  <span>{{row[col.field]}}</span>
+                </div>
+              </ng-template>
+        </p-column>
+        <p-column [style]="{'width':'100px'}" header="操作">
+          <ng-template let-col let-row="rowData" let-index="rowIndex" pTemplate="body">
+            <a href="javascript:void(0);">编辑</a>&nbsp;
+            <a href="javascript:void(0);" class="delete-font" (click)="deleteApi(index)">删除</a>
+          </ng-template>
+        </p-column>
       </p-dataTable>
     </section>
   </section>
