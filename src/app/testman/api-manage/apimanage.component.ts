@@ -76,7 +76,7 @@ export class ApiManageComponent implements OnInit {
         region: 'blackpearltest.4009515151.com',
         creator: '许春洋',
         updator: '黎律',
-        updateTime: '2018/03/01'
+        updateTime: '2018/04/21'
       }, {
         num: 6,
         apiName: '商家列表接口1',
@@ -84,7 +84,7 @@ export class ApiManageComponent implements OnInit {
         region: 'www.baidu.com',
         creator: '许春洋',
         updator: '胡媛洁',
-        updateTime: '2018/03/15'
+        updateTime: '2018/04/23'
       }, {
         num: 7,
         apiName: '登陆友邻市集1',
@@ -92,7 +92,7 @@ export class ApiManageComponent implements OnInit {
         region: 'www.google.com',
         creator: '黎律',
         updator: '郑婷婷',
-        updateTime: '2018/04/15'
+        updateTime: '2018/04/25'
       }, {
         num: 8,
         apiName: '购物车1',
@@ -100,7 +100,7 @@ export class ApiManageComponent implements OnInit {
         region: 'www.sina.com',
         creator: '郑婷婷',
         updator: '胡媛洁',
-        updateTime: '2018/04/20'
+        updateTime: '2018/04/30'
       }
     ];
     this.allTestApis = JSON.parse(JSON.stringify(this.testApis));
@@ -109,17 +109,30 @@ export class ApiManageComponent implements OnInit {
   // 过滤
   onFilter() {
     let testApis = this.allTestApis;
+    // 选择创建人
     if (this.cteator !== '全部') {
       testApis = testApis.filter(item => item['creator'] === this.cteator);
     }
+    // 选择更新人
     if (this.updator !== '全部') {
       testApis = testApis.filter(item => item['updator'] === this.updator);
     }
+    // 选择域
     if (this.region !== '全部') {
       testApis = testApis.filter(item => item['region'] === this.region);
     }
+    // 搜索关键字
     if (this.searchText) {
       testApis = testApis.filter(item => (item['apiName'].indexOf(this.searchText) !== -1) || (item['url'].indexOf(this.searchText) !== -1));
+    }
+    // 选择日期
+    if (this.updateDate && (this.updateDate[0] || this.updateDate[1])) {
+      let minDate, maxDate, nowDate;
+      nowDate = new Date().getTime();
+      minDate = this.updateDate[0] ? new Date(this.updateDate[0]).getTime() : 0;
+      maxDate = this.updateDate[1] ? new Date(this.updateDate[1]).getTime() : nowDate;
+      testApis = testApis.filter(item => (new Date(item['updateTime']).getTime() >= minDate)
+        && (new Date(item['updateTime']).getTime() <= maxDate));
     }
     this.testApis = testApis;
     this.dataTable.value = testApis;
@@ -131,9 +144,9 @@ export class ApiManageComponent implements OnInit {
     this.onFilter();
   }
 
-  // 选择日期
-  onSelectDate() {
-    console.log(this.updateDate);
+  // 清除时间过滤
+  onClear() {
+    this.dataTable.value = this.allTestApis;
   }
 
   deleteApi(index) {

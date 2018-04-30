@@ -15,17 +15,17 @@
       <span class="select-title">域：</span>
       <p-dropdown [options]="regions" name="region" [(ngModel)]="region" [style]="{'width':'160px'}" (onChange)="onFilter()"></p-dropdown>
       &nbsp;
-      <p-calendar class="pull-right" [selectionMode]="'range'" [(ngModel)]="updateDate" dateFormat="yy/mm/dd" showButtonBar="true"
-        showIcon="true" placeholder="请选择时间过滤" (onSelect)="onSelectDate()"></p-calendar>
-      &nbsp;
       <search-input class="pull-right" [searchText]="searchText" (search)="onSearch($event)"></search-input>
+      &nbsp;
+      <p-calendar class="margin-right-40 pull-right" [selectionMode]="'range'" [(ngModel)]="updateDate" dateFormat="yy/mm/dd" showButtonBar="true"
+        showIcon="true" placeholder="请选择时间过滤" (onSelect)="onFilter()" (onClearClick)="onClear()"></p-calendar>
     </header>
     <section class="test-case-table">
-      <p-dataTable #dataTable [value]="testApis" [paginator]="true" [rows]="3" [pageLinks]="3" [rowsPerPageOptions]="[3,10]">
+      <p-dataTable #dataTable [value]="testApis" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[5,10,20]">
         <p-column [style]="{'width':'30px'}" selectionMode="multiple"></p-column>
         <p-column [style]="{'width':'50px'}" field="num" header="编号">
           <ng-template let-col let-row="rowData" pTemplate="body">
-            <span>{{row[col.field]}}</span>
+            <span class="table-cell">{{row[col.field]}}</span>
           </ng-template>
         </p-column>
         <p-column [style]="{'width':'15%'}" field="apiName" header="接口名称">

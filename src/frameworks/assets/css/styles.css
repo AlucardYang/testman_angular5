@@ -60,6 +60,10 @@ ol {
   margin-right: 10px !important;
 }
 
+.margin-right-40 {
+  margin-right: 40px;
+}
+
 .width-100 {
   width: 100% !important;
 }
@@ -102,6 +106,12 @@ ol {
   color: #f00 !important;
 }
 
+.table-cell {
+  height: 30px;
+  line-height: 30px;
+  display: inline-block;
+}
+
 /* 表格样式 */
 
 .add-form {
@@ -140,7 +150,7 @@ ol {
   height: 40px;
 }
 
-/* primeNg样式重置 */
+/* primeNg样式重置开始 */
 
 /* 下拉框三角号位置 */
 
@@ -200,6 +210,16 @@ ol {
   padding: 0 !important;
   background: 0;
 }
+
+/* datatable样式 */
+
+.ui-datatable-emptymessage {
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+/* primeNg样式重置结束 */
 
 /* 按钮样式 */
 
