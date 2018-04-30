@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FrameworksRouteModule } from './frameworks-route.module';
 
-import { HeaderNavModule } from '../app/shared/header-nav/headernav.module';
-import { LeftMenuModule } from '../app/shared/left-menu/leftmenu.module';
+import { HeaderNavModule } from './shared/components/header-nav/headernav.module';
+import { LeftMenuModule } from './shared/components/left-menu/leftmenu.module';
 
 import { FrameworkComponent } from './frameworks.component';
 import { TestManService } from '../app/shared/services/testman.service';

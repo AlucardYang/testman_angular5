@@ -1,0 +1,44 @@
+.json-list {
+  margin: 10px 20px;
+}
+
+.json-list-textarea {
+  resize: none;
+  width: 100%;
+  height: 200px;
+  border-radius: 3px;
+  margin: 0 3px;
+  border-top-left-radius: 0;
+}
+
+.table-content {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.parameter-name {
+  position: relative;
+  width: 25%;
+  float: left;
+  margin-right: 10px;
+}
+
+.parameter-type {
+  width: 10%;
+  float: left;
+  margin: 5px 10px 5px 0;
+}
+
+.parameter-value {
+  width: 15%;
+}
+
+.parameter-desc {
+  width: calc(40% - 40px);
+}
+
+.expand-icon-position {
+  position: absolute;
+  top: 16px;
+  left: 0;
+}

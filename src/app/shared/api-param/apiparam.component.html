@@ -1,0 +1,27 @@
+<div class="table-content">
+  <div class="table-row">
+    <div class="parameter-td parameter-name">字段/变量</div>
+    <div class="parameter-td parameter-type">字段类型</div>
+    <div class="parameter-td parameter-type">是否必填</div>
+    <div class="parameter-td parameter-name">默认值</div>
+    <div class="parameter-td parameter-desc">描述</div>
+    <div class="parameter-td parameter-operation margin-right-0">操作</div>
+    <div class="clear-both"></div>
+  </div>
+  <div class="table-row" *ngFor="let param of params;let i = index;">
+    <input class="parameter-td parameter-name" [title]="param?.name" name="paramName{{i}}" [(ngModel)]="param.name">
+    <div class="parameter-type" [title]="param?.type">
+      <p-dropdown [options]="types" name="paramType{{i}}" [(ngModel)]="param.type" [style]="{'width':'100%','height':'30px'}"></p-dropdown>
+    </div>
+    <div class="parameter-type" [title]="param?.default">
+      <p-dropdown [options]="defaults" name="paramDefault{{i}}" [(ngModel)]="param.default" [style]="{'width':'100%','height':'30px'}"></p-dropdown>
+    </div>
+    <input class="parameter-td parameter-name" [title]="param?.value" name="paramValue{{i}}" [(ngModel)]="param.value">
+    <input class="parameter-td parameter-desc" [title]="param?.description" name="paramDescription{{i}}" [(ngModel)]="param.description">
+    <div class="parameter-td parameter-operation margin-right-0">
+      <a href="javascript:void(0);" (click)="operateUrlParam('add', i)">添加</a>&nbsp;
+      <a href="javascript:void(0);" class="delete-font" (click)="operateUrlParam('delete', i)">删除</a>
+    </div>
+    <div class="clear-both"></div>
+  </div>
+</div>

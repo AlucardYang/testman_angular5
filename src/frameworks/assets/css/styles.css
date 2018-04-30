@@ -52,10 +52,181 @@ ol {
   float: none;
 }
 
+.margin-right-0 {
+  margin-right: 0 !important;
+}
+
 /* 业务样式 */
 
 .content-container {
-    padding: 0 6%;
+  padding: 0 6%;
+}
+
+.manage-header {
+  height: 56px;
+  line-height: 56px;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0 20px;
+}
+
+.manage-second-header {
+  margin-top: 10px;
+  height: 30px;
+  line-height: 30px;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+  color: #333;
+  margin: 20px 20px 0 20px;
+}
+
+/* 表格样式 */
+
+.add-form {
+  padding: 20px 0;
+}
+
+.parameter-td {
+  float: left;
+  position: relative;
+  height: 30px;
+  margin: 5px 0;
+  padding: 5px 10px;
+  color: #333;
+  text-decoration: none;
+  font-weight: normal;
+  border: 1px solid #ccc;
+  background: #fafafa;
+  background: -webkit-linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+  background: -moz-linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+  background: linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  margin-right: 10px;
+}
+
+.parameter-td:hover,
+.parameter-td:focus {
+  color: #2ea8e5;
+  background: #fff;
+}
+
+.table-row {
+  width: 100%;
+  height: 40px;
+}
+
+/* primeNg样式重置 */
+
+/* 下拉框三角号位置 */
+
+.ui-dropdown .ui-dropdown-trigger .fa {
+  margin-top: 0.5em !important;
+  margin-left: -0.2em !important;
+}
+
+.table-content .ui-dropdown {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+  background: #fafafa;
+  background: -webkit-linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+  background: -moz-linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+  background: linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+}
+
+/* 下拉框样式 */
+
+.table-content .ui-dropdown .ui-dropdown-label {
+  display: block;
+  border: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  font-weight: normal;
+  width: 100%;
+  padding-right: 2.5em;
+  background: #fafafa;
+  background: -webkit-linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+  background: -moz-linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+  background: linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+}
+
+.table-content .ui-dropdown .ui-dropdown-trigger {
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 0;
+  cursor: pointer;
+  width: 1.5em;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0 .25em;
+  background: #fafafa;
+  background: -webkit-linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+  background: -moz-linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+  background: linear-gradient(to bottom, #fafafa 0%, #eeeeee 100%);
+}
+
+/* TabView样式 */
+
+.ui-tabview .ui-tabview-panel {
+  border-width: 0;
+  padding: 0 !important;
+  background: 0;
+}
+
+/* 按钮样式 */
+
+.add-button {
+  height: 32px;
+  line-height: 22px;
+  background-color: rgba(20, 188, 182, 1);
+  border-radius: 3px;
+  font-size: 14px;
+  color: #fff;
+  outline: none;
+  padding: 5px 20px;
+  border: none;
+  margin-top: 12px;
+}
+
+/* 表单样式 */
+
+.form-group {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.form-group>label {
+  height: 30px;
+  line-height: 30px;
+  font-weight: normal;
+  text-align: right;
+}
+
+.require-style {
+  position: relative;
+}
+
+.require-style:before {
+  content: '*';
+  color: #f00;
+  position: absolute;
+  left: -10px;
+  top: -2px;
+}
+
+.ui-float-label input {
+  width: 100%;
+}
+
+.ui-float-label label {
+  margin-left: 20px;
 }
 
 /* 图标样式 */
