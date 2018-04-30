@@ -3,14 +3,14 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 
 import { TestManService } from '../../shared/services/testman.service';
-import { AddCaseService } from './addcase.service';
+import { AddApiService } from './addapi.service';
 
 @Component({
   moduleId: module.id,
-  templateUrl: './addcase.component.html',
-  styleUrls: ['./addcase.component.scss']
+  templateUrl: './addapi.component.html',
+  styleUrls: ['./addapi.component.scss']
 })
-export class AddCaseComponent implements OnInit {
+export class AddApiComponent implements OnInit {
   urlParams: Array<any> = [];
   regions: SelectItem[];
   apiMethods: SelectItem[];
@@ -25,7 +25,7 @@ export class AddCaseComponent implements OnInit {
   jsonResponse: any;
   apiAddress = '12.32.23.23:8080';
   isShowResponse: Boolean = false;
-  constructor(private router: Router, private testManService: TestManService, private addCaseService: AddCaseService) {
+  constructor(private router: Router, private testManService: TestManService, private addApiService: AddApiService) {
 
   }
 

@@ -9,8 +9,8 @@ import { SharedModule } from '../../../frameworks/shared/index';
 import { ApiParamModule } from '../../shared/api-param/apiparam.module';
 import { JsonListModule } from '../../shared/json-list/jsonlist.module';
 
-import { AddCaseComponent } from './addcase.component';
-import { AddCaseService } from './addcase.service';
+import { AddApiComponent } from './addapi.component';
+import { AddApiService } from './addapi.service';
 
 @NgModule({
   imports: [
@@ -22,17 +22,17 @@ import { AddCaseService } from './addcase.service';
     JsonListModule,
     RouterModule.forChild([{
       path: '',
-      component: AddCaseComponent
+      component: AddApiComponent
     }])
   ],
   exports: [
 
   ],
   declarations: [
-    AddCaseComponent,
+    AddApiComponent,
   ],
   providers: [
-    AddCaseService,
+    AddApiService,
   ],
 })
-export class AddCaseModule { }
+export class AddApiModule { }
