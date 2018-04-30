@@ -5,8 +5,8 @@ import { DataTableModule } from 'primeng/primeng';
 
 import { SharedModule } from '../../../frameworks/shared/index';
 
-import { TestCaseManageComponent } from './testcasemanage.component';
-import { TestCaseManageService } from './testcasemanage.service';
+import { CaseManageComponent } from './casemanage.component';
+import { CaseManageService } from './casemanage.service';
 
 @NgModule({
   imports: [
@@ -14,17 +14,17 @@ import { TestCaseManageService } from './testcasemanage.service';
     SharedModule,
     RouterModule.forChild([{
       path: '',
-      component: TestCaseManageComponent
+      component: CaseManageComponent
     }])
   ],
   exports: [
 
   ],
   declarations: [
-    TestCaseManageComponent,
+    CaseManageComponent,
   ],
   providers: [
-    TestCaseManageService,
+    CaseManageService,
   ],
 })
-export class TestCaseManageModule { }
+export class CaseManageModule { }

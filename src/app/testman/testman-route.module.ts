@@ -8,8 +8,8 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'testcasemanage',
-    loadChildren: './test-case-manage/testcasemanage.module#TestCaseManageModule'
+    path: 'casemanage',
+    loadChildren: './case-manage/casemanage.module#CaseManageModule'
   },
   {
     path: 'addcase',

@@ -3,10 +3,10 @@ import { RouterModule, Routes, Router } from '@angular/router';
 
 @Component({
   moduleId: module.id,
-  templateUrl: './testcasemanage.component.html',
-  styleUrls: ['./testcasemanage.component.scss']
+  templateUrl: './casemanage.component.html',
+  styleUrls: ['./casemanage.component.scss']
 })
-export class TestCaseManageComponent implements OnInit {
+export class CaseManageComponent implements OnInit {
   cteator: any = '郑婷婷';
   cteators: Array<any> = ['郑婷婷', '曾晨', '张三', '李四'];
   updator: any = '郑婷婷';
