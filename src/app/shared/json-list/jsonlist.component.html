@@ -1,40 +1,30 @@
-<div class="json-list">
-  <p-tabView>
-    <p-tabPanel header="Header">
-        <textarea class="json-list-textarea" name="jsonHeader" id="jsonHeader" cols="30" rows="10" [(ngModel)]="jsonHeader"></textarea>
-    </p-tabPanel>
-    <p-tabPanel header="Body">
-      <textarea class="json-list-textarea" name="jsonBody" id="jsonBody" cols="30" rows="10" [(ngModel)]="jsonBody" (blur)="getParam()"></textarea>
-      <div class="table-content">
-        <div class="table-row">
-          <div class="parameter-td parameter-name">字段名称</div>
-          <div class="parameter-td parameter-type">字段类型</div>
-          <div class="parameter-td parameter-type">是否必填</div>
-          <div class="parameter-td parameter-value">默认值</div>
-          <div class="parameter-td parameter-desc margin-right-0">描述</div>
-          <div class="clear-both"></div>
-        </div>
-        <div class="table-row" *ngFor="let json of jsons;let i = index;" [hidden]="!json?.show">
-          <div class="parameter-name">
-            <input class="parameter-td float-none" [style.margin-left]="json?.layer*12+'px'" [style.width]="'calc(100% - '+json?.layer*12+'px)'"
-              [title]="json?.name" name="jsonName{{i}}" [(ngModel)]="json.name">
-            <a class="icon-wrapper expand-icon-position" [ngClass]="{'cursor-pointer': json?.isParent}" [style.left]="(json?.layer-1)*12-2+'px'"
-              (click)="openOrClose(json)">
-              <span *ngIf="json?.isParent" class="glyphicon" [ngClass]="{'glyphicon-chevron-down': json?.open, 'glyphicon-chevron-up': !json?.open}"></span>
-            </a>
-          </div>
-          <div class="parameter-type" [title]="json?.type">
-            <p-dropdown [options]="types" name="jsonType{{i}}" [(ngModel)]="json.type" [style]="{'width':'100%','height':'30px'}"></p-dropdown>
-          </div>
-          <div class="parameter-type" [title]="json?.default">
-            <p-dropdown [options]="defaults" name="jsonDefault{{i}}" [(ngModel)]="json.default" [style]="{'width':'100%','height':'30px'}"></p-dropdown>
-          </div>
-          <input class="parameter-td parameter-value" [title]="json?.value" name="jsonValue{{i}}" [(ngModel)]="json.value">
-          <input class="parameter-td parameter-desc margin-right-0" [title]="json?.description" name="jsonDescription{{i}}" [(ngModel)]="json.description">
-          <div class="clear-both"></div>
-        </div>
-      </div>
-    </p-tabPanel>
-  </p-tabView>
-
+<textarea class="api-textarea" name="jsonStr" id="jsonStr" cols="30" rows="10" [(ngModel)]="jsonStr" (blur)="getParam()"></textarea>
+<div class="table-content">
+  <div class="table-row">
+    <div class="parameter-td parameter-name">字段名称</div>
+    <div class="parameter-td parameter-type">字段类型</div>
+    <div class="parameter-td parameter-type">是否必填</div>
+    <div class="parameter-td parameter-value">默认值</div>
+    <div class="parameter-td parameter-desc margin-right-0">描述</div>
+    <div class="clear-both"></div>
+  </div>
+  <div class="table-row" *ngFor="let json of jsons;let i = index;" [hidden]="!json?.show">
+    <div class="parameter-name">
+      <input class="parameter-td float-none" [style.margin-left]="json?.layer*12+'px'" [style.width]="'calc(100% - '+json?.layer*12+'px)'"
+        [title]="json?.name" name="jsonName{{i}}" [(ngModel)]="json.name">
+      <a class="icon-wrapper expand-icon-position" [ngClass]="{'cursor-pointer': json?.isParent}" [style.left]="(json?.layer-1)*12-2+'px'"
+        (click)="openOrClose(json)">
+        <span *ngIf="json?.isParent" class="glyphicon" [ngClass]="{'glyphicon-chevron-down': json?.open, 'glyphicon-chevron-up': !json?.open}"></span>
+      </a>
+    </div>
+    <div class="parameter-type" [title]="json?.type">
+      <p-dropdown [options]="types" name="jsonType{{i}}" [(ngModel)]="json.type" [style]="{'width':'100%','height':'30px'}"></p-dropdown>
+    </div>
+    <div class="parameter-type" [title]="json?.default">
+      <p-dropdown [options]="defaults" name="jsonDefault{{i}}" [(ngModel)]="json.default" [style]="{'width':'100%','height':'30px'}"></p-dropdown>
+    </div>
+    <input class="parameter-td parameter-value" [title]="json?.value" name="jsonValue{{i}}" [(ngModel)]="json.value">
+    <input class="parameter-td parameter-desc margin-right-0" [title]="json?.description" name="jsonDescription{{i}}" [(ngModel)]="json.description">
+    <div class="clear-both"></div>
+  </div>
 </div>

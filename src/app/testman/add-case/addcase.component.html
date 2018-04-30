@@ -48,7 +48,19 @@
       </div>
       <div class="clear-both"></div>
       <api-param *ngIf="urlParams?.length!==0" [params]="urlParams"></api-param>
-      <json-list></json-list>
+      <div id="headerBodyContent" class="header-body-content">
+        <p-tabView>
+          <p-tabPanel header="Header" [selected]="tabType==='Header'" (onChange)="tabType='Header'">
+            <textarea class="api-textarea" name="jsonHeader" id="jsonHeader" cols="30" rows="10" [(ngModel)]="jsonHeader"></textarea>
+          </p-tabPanel>
+          <p-tabPanel header="Body" [selected]="tabType==='Body'" (onChange)="tabType='Body'">
+            <json-list [jsonStr]="jsonBody"></json-list>
+          </p-tabPanel>
+          <p-tabPanel *ngIf="isShowResponse" header="Response" [selected]="tabType==='Response'" (onChange)="tabType='Response'">
+            <json-list [jsonStr]="jsonResponse"></json-list>
+          </p-tabPanel>
+        </p-tabView>
+      </div>
       <div class="col-md-6 col-sm-6 col-xs-12 form-group">
         <label class="col-sm-3">
           <span class="require-style">运行环境：</span>
@@ -59,6 +71,8 @@
         </span>
       </div>
       <button class="add-button run-api-button pull-left" type="button" (click)="runApi()">运行</button>
+      <button *ngIf="isShowResponse" class="add-button run-api-button pull-left" type="button">保存</button>
+      <button class="add-button run-api-button pull-left" type="button">返回</button>
       <div class="clear-both"></div>
     </form>
   </section>

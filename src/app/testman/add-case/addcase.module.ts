@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
+import { TabViewModule } from 'primeng/tabview';
 
 import { SharedModule } from '../../../frameworks/shared/index';
 import { ApiParamModule } from '../../shared/api-param/apiparam.module';
@@ -15,6 +16,7 @@ import { AddCaseService } from './addcase.service';
   imports: [
     DropdownModule,
     InputTextModule,
+    TabViewModule,
     SharedModule,
     ApiParamModule,
     JsonListModule,

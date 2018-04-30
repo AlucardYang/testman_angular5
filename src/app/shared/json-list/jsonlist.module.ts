@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
-import { TabViewModule } from 'primeng/tabview';
 
 import { SharedModule } from '../../../frameworks/shared/index';
 
@@ -12,8 +11,7 @@ import { JsonListService } from './jsonlist.service';
   imports: [
     DropdownModule,
     InputTextModule,
-    TabViewModule,
-    SharedModule,
+    SharedModule
   ],
   declarations: [
     JsonListComponent,

@@ -10,14 +10,13 @@ import { TestManService } from '../services/testman.service';
 })
 export class JsonListComponent implements OnInit {
   json: any;
-  jsonHeader: any;
-  jsonBody: any;
   jsons: Array<any> = [];
   types: SelectItem[];
   defaults: SelectItem[];
   id: any = 1;     // 当前id
   pid: any = 0;    // 父id
   layer: any = 0;  // 层级
+  @Input() jsonStr: any;
   constructor(private testManService: TestManService) {
 
   }
@@ -27,8 +26,6 @@ export class JsonListComponent implements OnInit {
     this.defaults = this.testManService.defaults;
 
     // this.jsonStr = '{"name":"testcase","testcase":[{"num":1,"testCaseName":"老用户登陆友邻市集","apiName":"登陆友邻市集","state":"无效","creator":"郑婷婷","updator":"曾晨","updateTime":""},{"num":2.0,"testCaseName":"团购商品详情页获取","apiName":"商家列表接口","state":"有效","creator":"李四","updator":"曾晨","updateTime":""},{"num":3,"testCaseName":"普通商品详情页获取","apiName":"友邻商品详情接口","state":"无效","creator":"张三","updator":"曾晨","updateTime":""}],"place":{"1":"深圳","2":"广州"}}';
-    this.jsonBody = '{"code":0,"result":{"goods_id":"176","head_imgs":["http://odso6i1fb.bkt.clouddn.com/2018/01/16/m30puac9k1va68gy.jpg","http://odso6i1fb.bkt.clouddn.com/2018/01/16/3r1lrzbw0otb92vn.jpg","http://odso6i1fb.bkt.clouddn.com/2018/01/16/wz5081bkxko60s3.JPG"],"name":"吃的","title":"吃的吃的吃的吃的","min_price":100,"max_price":100,"end_time":1559376360000,"sunshine_community":true,"sunshine_price":1,"extend_product":false,"specs":[],"products":[{"product_id":"382","price":100,"stock":1000,"property":[],"limit_buy_num":null}],"shiping":0,"features":[],"introduce_goods":{"title":"商品介绍","content":"吃的吃的吃的吃的吃的吃的吃的吃的吃的吃的","img":["http://odso6i1fb.bkt.clouddn.com/2018/01/16/3i75p5md7wtvdhs1.jpg"]},"introduce_special":{"title":null,"content":null,"img":null},"supplier":{"supplier_name":"固定分类的商家","supplier_icon":"http://odso6i1fb.bkt.clouddn.com/2018/01/08/0ei047yddljuj0tr.png","supplier_id":25},"activity":{"id":309,"name":"23424","type":"GROUPON","price":99,"stock":null,"limit_buy_num":1,"curr_time":1524620535678,"start_time":1517205480000,"end_time":1524981480000,"groupon_num":2,"groupon_paid_num":0,"paid_user_num":0,"source":"","introduction":"","activity_img_url":null,"activity_status":null,"unpaid":false,"over":true},"nationwide_sales":1,"snap_id":238,"supplier_id":25,"category_id":640,"free_shipping":null},"message":null}';
-
     this.getParam();
   }
 
@@ -128,7 +125,8 @@ export class JsonListComponent implements OnInit {
     this.pid = 0;
     this.layer = 1;
     this.jsons = [];
-    let json = this.jsonBody && this.jsonBody.replace(/\n/ig, '');
+    let json = this.jsonStr && this.jsonStr.replace(/\n/g, '');
+    // console.log(json);
     if (this.testManService.isJSON(json)) {
       json = JSON.parse(json);
       this.getJsonData(json, this.id, this.pid, this.layer);
