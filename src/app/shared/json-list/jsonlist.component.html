@@ -6,11 +6,11 @@
 </div>
 <div *ngIf="jsons?.length !== 0" class="table-content">
   <div class="table-row">
-    <div class="parameter-td parameter-name">字段名称</div>
-    <div class="parameter-td parameter-type">字段类型</div>
-    <div class="parameter-td parameter-type">是否必填</div>
-    <div class="parameter-td parameter-value">默认值</div>
-    <div class="parameter-td parameter-desc margin-right-0">描述</div>
+    <div class="parameter-th parameter-name">字段名称</div>
+    <div class="parameter-th parameter-type">字段类型</div>
+    <div class="parameter-th parameter-type">是否必填</div>
+    <div class="parameter-th parameter-value">默认值</div>
+    <div class="parameter-th parameter-desc margin-right-0">描述</div>
     <div class="clear-both"></div>
   </div>
   <div class="table-row" *ngFor="let json of jsons;let i = index;" [hidden]="!json?.show">

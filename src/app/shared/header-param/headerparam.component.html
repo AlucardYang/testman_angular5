@@ -1,10 +1,10 @@
 <textarea class="api-textarea" name="jsonHeader" id="jsonHeader" cols="30" rows="10" [(ngModel)]="jsonStr" (blur)="getParams()"></textarea>
 <div *ngIf="params?.length!==0" class="table-content">
   <div class="table-row">
-    <div class="parameter-td parameter-name">字段名称</div>
-    <div class="parameter-td parameter-method">方法</div>
-    <div class="parameter-td parameter-param">参数</div>
-    <div class="parameter-td parameter-operation margin-right-0">操作</div>
+    <div class="parameter-th parameter-name">字段名称</div>
+    <div class="parameter-th parameter-method">方法</div>
+    <div class="parameter-th parameter-param">参数</div>
+    <div class="parameter-th parameter-operation margin-right-0">操作</div>
     <div class="clear-both"></div>
   </div>
   <div class="table-row" *ngFor="let param of params;let i = index;">
