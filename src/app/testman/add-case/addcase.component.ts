@@ -13,18 +13,24 @@ import * as $ from 'jquery';
 })
 export class AddCaseComponent implements OnInit {
   urlParams: Array<any> = [];
-  regions: SelectItem[];
+  bodyParams: Array<any> = [];
+  ResponseParams: Array<any> = [];
   apis: SelectItem[];
+  runEnvironments: SelectItem[];
   caseName: String = '普通商品详情页获取';
   caseDescription: String = '';
   api: String = '';
-  region: String = 'blackpearltest.4009515151.com';
+  runEnvironment: String = '友邻市集测试环境';
   apiUrl: String = '';
-  tabType: String = 'Header';
   jsonHeader: any;
-  jsonBody: any;
-  activeIndex: Number = 0;
+  activeIndex: Number = 1;
+  isShowBodyParam: Boolean = false;
+  isShowResponseParam: Boolean = false;
+  isShowResponse: Boolean = false;
+  expectResponse: String = '';
+  realResponse: String = '';
   @ViewChild('tabView') tabView;
+  @ViewChild('runTabView') runTabView;
   constructor(private router: Router, private testManService: TestManService,
     private addApiService: AddCaseService) {
 
@@ -38,15 +44,35 @@ export class AddCaseComponent implements OnInit {
       { label: '友邻市集登陆接口', value: '/interfaces/goods/login/{user_id}' },
       { label: '友邻市集注册接口', value: '/interfaces/goods/sign/{sign_up_id}/{user_id}' }
     ];
-    this.regions = [
-      { label: 'blackpearltest.4009515151.com', value: 'blackpearltest.4009515151.com' },
-      { label: 'www.baidu.com', value: 'www.baidu.com' },
-      { label: 'www.google.com', value: 'www.google.com' }
+
+    this.bodyParams = [
+      {
+        name: '',
+        value: '',
+        type: 'string',
+        default: '否'
+      }
+    ];
+
+    this.ResponseParams = [
+      {
+        name: '',
+        value: '',
+        type: 'string',
+        default: '否'
+      }
+    ];
+
+    this.runEnvironments = [
+      { label: '友邻市集测试环境', value: '友邻市集测试环境' },
+      { label: '友邻市集开发环境', value: '友邻市集开发环境' },
+      { label: '友邻市集回归环境', value: '友邻市集回归环境 ' },
+      { label: '猫头鹰冒烟环境', value: '猫头鹰冒烟环境' }
     ];
 
     this.jsonHeader = '{"Access-Control-Allow-Credentials": true,"Access-Control-Allow-Origin": "http://uiistest.4009515151.com","Content-Type": "application/json;charset=UTF-8","Date": "2018/05/01"}';
-    this.jsonBody = '{"code":0,"result":{"goods_id":"176","head_imgs":["http://odso6i1fb.bkt.clouddn.com/2018/01/16/m30puac9k1va68gy.jpg","http://odso6i1fb.bkt.clouddn.com/2018/01/16/3r1lrzbw0otb92vn.jpg","http://odso6i1fb.bkt.clouddn.com/2018/01/16/wz5081bkxko60s3.JPG"],"name":"吃的","title":"吃的吃的吃的吃的","min_price":100,"max_price":100,"end_time":1559376360000,"sunshine_community":true,"sunshine_price":1,"extend_product":false,"specs":[],"products":[{"product_id":"382","price":100,"stock":1000,"property":[],"limit_buy_num":null}],"shiping":0,"features":[],"introduce_goods":{"title":"商品介绍","content":"吃的吃的吃的吃的吃的吃的吃的吃的吃的吃的","img":["http://odso6i1fb.bkt.clouddn.com/2018/01/16/3i75p5md7wtvdhs1.jpg"]},"introduce_special":{"title":null,"content":null,"img":null},"supplier":{"supplier_name":"固定分类的商家","supplier_icon":"http://odso6i1fb.bkt.clouddn.com/2018/01/08/0ei047yddljuj0tr.png","supplier_id":25},"activity":{"id":309,"name":"23424","type":"GROUPON","price":99,"stock":null,"limit_buy_num":1,"curr_time":1524620535678,"start_time":1517205480000,"end_time":1524981480000,"groupon_num":2,"groupon_paid_num":0,"paid_user_num":0,"source":"","introduction":"","activity_img_url":null,"activity_status":null,"unpaid":false,"over":true},"nationwide_sales":1,"snap_id":238,"supplier_id":25,"category_id":640,"free_shipping":null},"message":null}';
 
+    this.expectResponse = '{"cnName": "string","createdAt": "2018-03-15T06:35:38.626Z","createdId": 0,"deptId": "string","email": "string","id": 0,"status": true,"title": "string","updatedAt": "2018-03-15T06:35:38.627Z","updatedId": 0,"userName": "string"}';
   }
 
   // 获取接口名称参数
@@ -98,5 +124,23 @@ export class AddCaseComponent implements OnInit {
     this.apiUrl = event['value'];
     this.urlParams = [];
     this.getParamInApiName();
+  }
+
+  // 运行用例
+  runCase() {
+    this.isShowResponse = true;
+  }
+
+  // 获取返回值
+  getResponse() {
+    this.realResponse = this.expectResponse;
+    this.runTabView.tabs[0].selected = false;
+    this.runTabView.tabs[1].selected = true;
+  }
+
+  // 返回运行操作
+  resetResult() {
+    this.isShowResponse = false;
+    this.expectResponse = '';
   }
 }

@@ -59,7 +59,7 @@
           <p-tabPanel header="Body">
             <json-list [jsonStr]="jsonBody"></json-list>
           </p-tabPanel>
-          <p-tabPanel header="Response">
+          <p-tabPanel *ngIf="isShowResponse" header="Response">
             <json-list [jsonStr]="jsonResponse" [isShowResult]="true" [isReultFalse]="true"></json-list>
           </p-tabPanel>
         </p-tabView>
@@ -72,11 +72,11 @@
             <label for="apiName">请输入运行环境地址</label>
           </span>
         </div>
-        <button class="add-button run-api-button pull-left" type="button" (click)="runApi()">运行</button>
+        <button class="add-button run-api-button" type="button" (click)="runApi()">运行</button>
       </div>
       <div class="col-md-12 col-sm-12 col-xs-12 form-group text-align-center">
         <button *ngIf="isShowResponse" class="add-button" type="button" [routerLink]="['/apimanage']">保存</button>&nbsp;&nbsp;
-        <button class=" add-button " type="button " [routerLink]="[ '/apimanage'] ">返回</button>
+        <button class="add-button" type="button" [routerLink]="['/apimanage']">返回</button>
       </div>
       <div class="clear-both"></div>
     </form>

@@ -51,11 +51,54 @@
             <header-param [jsonStr]="jsonHeader"></header-param>
           </p-tabPanel>
           <p-tabPanel header="Body">
-            <api-param *ngIf="urlParams?.length!==0" [params]="urlParams" [showBorder]="true"></api-param>
+            <div *ngIf="!isShowBodyParam" class="body-param-tip" (click)="isShowBodyParam = true">
+              点击此处添加你需要进行参数化的字段，若不添加，则使用接口默认值。
+            </div>
+            <api-param *ngIf="isShowBodyParam && bodyParams?.length!==0" [params]="bodyParams" [showBorder]="true"></api-param>
+          </p-tabPanel>
+          <p-tabPanel header="Response">
+            <div *ngIf="!isShowResponseParam" class="body-param-tip" (click)="isShowResponseParam = true">
+              点击此处你需要进行校验的字段，若不添加，则默认不对字段值进行校验。
+            </div>
+            <api-param *ngIf="isShowResponseParam && ResponseParams?.length!==0" [params]="ResponseParams" [showBorder]="true"></api-param>
           </p-tabPanel>
         </p-tabView>
+        <button class="add-button run-case-button" type="button" (click)="runCase()">运行</button>
       </div>
       <div class="clear-both"></div>
+      <div *ngIf="isShowResponse" class="run-case-box">
+        <div class="col-md-7 col-sm-7 col-xs-12 form-group padding-left-0">
+          <label class="col-sm-3">
+            <span class="require-style">运行环境：</span>
+          </label>
+          <p-dropdown class="col-sm-9" [options]="runEnvironments" name="runEnvironment" [(ngModel)]="runEnvironment" [style]="{'width':'100%'}"></p-dropdown>
+        </div>
+        <div class="col-md-5 col-sm-5 col-xs-12 form-group text-align-right">
+          <button class="add-button margin-top-0" type="button" (click)="getResponse()">运行</button>&nbsp;&nbsp;
+          <button class="add-button margin-top-0" type="button" (click)="resetResult()">返回</button>
+        </div>
+        <div class="clear-both"></div>
+        <p-tabView #runTabView>
+          <p-tabPanel header="发送报文">
+            <textarea class="api-textarea" name="expectResponse" id="expectResponse" cols="30" rows="10" [(ngModel)]="expectResponse"></textarea>
+          </p-tabPanel>
+          <p-tabPanel header="返回结果">
+            <textarea class="api-textarea" [ngClass]="{'copy-font': expectResponse === realResponse, 'delete-font': expectResponse !== realResponse }"
+              name="realResponse" id="realResponse" cols="30" rows="10" [(ngModel)]="realResponse"></textarea>
+          </p-tabPanel>
+        </p-tabView>
+        <div *ngIf="realResponse" class="reseult-row" [ngClass]="{'copy-font': expectResponse === realResponse, 'delete-font': expectResponse !== realResponse }">
+          <span>运行结果：</span>
+          <span *ngIf="expectResponse === realResponse">PASS</span>
+          <span *ngIf="expectResponse !== realResponse">FAIL</span>
+        </div>
+      </div>
+      <div *ngIf="api" class="col-md-12 col-sm-12 col-xs-12 form-group text-align-center">
+        <button *ngIf="isShowResponse" class="add-button" type="button" [routerLink]="['/casemanage']">保存</button>&nbsp;&nbsp;
+        <button class="add-button" type="button" [routerLink]="['/casemanage']">返回</button>
+      </div>
+      <div class="clear-both"></div>
+
     </form>
   </section>
 </div>

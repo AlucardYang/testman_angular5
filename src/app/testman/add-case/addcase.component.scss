@@ -9,7 +9,7 @@
 .run-case-button {
   position: absolute;
   top: -9px;
-  right: 2px;
+  right: 1px;
 }
 
 .header-body-content {
@@ -27,4 +27,38 @@
   border: 1px solid #eee;
   border-radius: 3px;
   margin: 20px;
+}
+
+.body-param-tip {
+  color: rgb(94, 82, 252);
+  border: 1px solid rgb(190, 190, 190);
+  padding: 10px;
+  border-radius: 3px;
+  border-top-left-radius: 0;
+  background-color: #f6f7f9;
+  cursor: pointer;
+  margin-left: 3px;
+  margin-right: -4px;
+}
+
+.run-case-box {
+  border: 1px solid rgb(190, 190, 190);
+  border-radius: 3px;
+  border-top-left-radius: 0;
+  background-color: #f6f7f9;
+  margin: 20px 15px;
+  padding: 0 0 13px 0;
+}
+
+.reseult-row {
+  margin-left: 3px;
+  font-weight: bold;
+  padding-left: 15px;
+}
+
+:host ::ng-deep .run-case-box .ui-widget-content {
+  border: none;
+  background: transparent;
+  color: #222222;
+  padding: 15px 20px 0px 15px;
 }

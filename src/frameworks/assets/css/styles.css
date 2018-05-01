@@ -52,6 +52,10 @@ ol {
   float: none;
 }
 
+.margin-top-0 {
+  margin-top: 0 !important;
+}
+
 .margin-right-0 {
   margin-right: 0 !important;
 }
@@ -64,12 +68,20 @@ ol {
   margin-right: 40px;
 }
 
+.padding-left-0 {
+  padding-left: 0 !important;
+}
+
 .width-100 {
   width: 100% !important;
 }
 
 .text-align-center {
   text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
 }
 
 /* 业务样式 */

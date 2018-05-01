@@ -20,7 +20,6 @@ export class AddApiComponent implements OnInit {
   apiMethod: String = 'GET';
   region: String = 'blackpearltest.4009515151.com';
   apiUrl: String = 'http://blackpearltest.4009515151.com/interfaces/goods/info/152/344?project_code=44190010';
-  tabType: String = 'Header';
   jsonHeader: any;
   jsonBody: any;
   jsonResponse: any;
@@ -103,10 +102,10 @@ export class AddApiComponent implements OnInit {
   runApi() {
     this.jsonResponse = '{"code":"0","is_right":"1","result":{"id":"25","name":"固定分类的商家","desc":"固定分类的商家固定分类的商家","contact":"啊哈哈哈","contact_number":"13450367912","city_company":null,"create_time":"2018-01-0810:44:31","icon":"http://odso6i1fb.bkt.clouddn.com/2018/01/08/0ei047yddljuj0tr.png","free_shipping":null},"message":null}';
     this.isShowResponse = true;
-    this.tabView.tabs[0].selected = false;
-    this.tabView.tabs[1].selected = false;
-    this.tabView.tabs[2].selected = true;
     setTimeout(() => {
+      this.tabView.tabs[0].selected = false;
+      this.tabView.tabs[1].selected = false;
+      this.tabView.tabs[2].selected = true;
       // document.documentElement.scrollTop = $('#headerBodyContent').offset().top;
     });
   }
