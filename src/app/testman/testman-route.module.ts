@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'addapi',
+    redirectTo: 'apimanage',
     pathMatch: 'full'
   }, {
     path: 'casemanage',

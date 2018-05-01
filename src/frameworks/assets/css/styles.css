@@ -68,6 +68,10 @@ ol {
   width: 100% !important;
 }
 
+.text-align-center {
+  text-align: center;
+}
+
 /* 业务样式 */
 
 .content-container {

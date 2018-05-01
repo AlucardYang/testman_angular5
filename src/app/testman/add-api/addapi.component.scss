@@ -7,10 +7,18 @@
 }
 
 .run-api-button {
-  margin-top: 17px;
-  margin-right: 10px;
+  position: absolute;
+  top: -9px;
+  right: 2px;
 }
 
 .header-body-content {
-  margin: 10px 20px 10px 13px;
+  margin: 20px 20px 0 13px;
+  position: relative;
+}
+
+.run-environment-position {
+  position: absolute;
+  top: -15px;
+  right: 50px;
 }

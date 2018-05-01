@@ -1,4 +1,9 @@
-<textarea class="api-textarea" name="jsonStr" id="jsonStr" cols="30" rows="10" [(ngModel)]="jsonStr" (blur)="getParam()"></textarea>
+<textarea class="api-textarea" [ngClass]="{'copy-font': isReultFalse }" name="jsonStr" id="jsonStr" cols="30" rows="10" [(ngModel)]="jsonStr"
+  (blur)="getParam()"></textarea>
+<div *ngIf="jsonStr && isShowResult" class="reseult-row">
+  <span>运行结果：</span>
+  <span>PASS</span>
+</div>
 <div *ngIf="jsons?.length !== 0" class="table-content">
   <div class="table-row">
     <div class="parameter-td parameter-name">字段名称</div>

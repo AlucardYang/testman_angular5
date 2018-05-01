@@ -17,6 +17,8 @@ export class JsonListComponent implements OnInit, OnChanges {
   pid: any = 0;    // 父id
   layer: any = 0;  // 层级
   @Input() jsonStr: any;
+  @Input() isShowResult: Boolean = false;
+  @Input() isReultFalse: Boolean = false;
   constructor(private testManService: TestManService) {
 
   }
