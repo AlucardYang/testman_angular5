@@ -1,0 +1,61 @@
+<div class="add-case-content">
+  <header class="manage-header">
+    <span>新建用例</span>
+  </header>
+  <section>
+    <header class="manage-second-header">
+      <span>基本信息</span>
+    </header>
+    <form class="add-form">
+      <div class="col-md-7 col-sm-7 col-xs-12 form-group">
+        <label class="col-sm-3">
+          <span class="require-style">用例名称：</span>
+        </label>
+        <span class="ui-float-label col-sm-9">
+          <input type="text" pInputText [(ngModel)]="caseName" name="caseName" id="caseName" (blur)="getParamInApiName()">
+          <label for="caseName">请输入用例名称</label>
+        </span>
+      </div>
+      <div class="col-md-7 col-sm-7 col-xs-12 form-group">
+        <label class="col-sm-3">
+          <span class="require-style">接口：</span>
+        </label>
+        <p-dropdown class="col-sm-9" [options]="apis" name="api" [(ngModel)]="api" [style]="{'width':'100%'}" (onChange)="changeApiName($event)"></p-dropdown>
+      </div>
+      <div class="col-md-7 col-sm-7 col-xs-12 form-group">
+        <label class="col-sm-3">
+          <span>描述：</span>
+        </label>
+        <span class="ui-float-label col-sm-9">
+          <input type="text" pInputText [(ngModel)]="caseDescription" name="caseDescription" id="caseDescription">
+          <label for="caseDescription">请输入用例描述</label>
+        </span>
+      </div>
+      <div class="clear-both"></div>
+      <div *ngIf="api" class="url-and-params-box">
+        <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+          <label class="col-sm-3 url-label">
+            <span>URL：</span>
+          </label>
+          <span class="ui-float-label col-sm-9">
+            <input type="text" pInputText [(ngModel)]="apiUrl" name="apiUrl" id="apiUrl" (blur)="getParamInApiName()">
+            <label for="apiUrl"></label>
+          </span>
+        </div>
+        <div class="clear-both"></div>
+        <api-param *ngIf="urlParams?.length!==0" [params]="urlParams"></api-param>
+      </div>
+      <div *ngIf="api" id="headerBodyContent" class="header-body-content">
+        <p-tabView #tabView [activeIndex]="activeIndex">
+          <p-tabPanel header="Header">
+            <header-param [jsonStr]="jsonHeader"></header-param>
+          </p-tabPanel>
+          <p-tabPanel header="Body">
+            <api-param *ngIf="urlParams?.length!==0" [params]="urlParams" [showBorder]="true"></api-param>
+          </p-tabPanel>
+        </p-tabView>
+      </div>
+      <div class="clear-both"></div>
+    </form>
+  </section>
+</div>

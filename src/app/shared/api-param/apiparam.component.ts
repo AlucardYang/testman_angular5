@@ -15,6 +15,7 @@ export class ApiParamComponent implements OnInit {
   types: SelectItem[];
   defaults: SelectItem[];
   @Input() params: Array<any> = [];
+  @Input() showBorder: Boolean = false;
   constructor(private testManService: TestManService) {
 
   }

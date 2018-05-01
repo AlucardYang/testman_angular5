@@ -1,5 +1,5 @@
 .table-content {
-  margin: 10px 20px;
+  margin: 10px;
 }
 
 .parameter-name {
@@ -19,4 +19,12 @@
 .parameter-operation {
   width: 110px;
   text-align: center;
+}
+
+.table-content-border {
+  border: 1px solid rgb(169, 169, 169);
+  border-radius: 3px;
+  margin: 0 -5px 0 3px;
+  padding: 5px 10px 6px 10px;
+  border-top-left-radius: 0;
 }

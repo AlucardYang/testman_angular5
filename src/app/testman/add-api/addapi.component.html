@@ -12,7 +12,7 @@
           <span class="require-style">接口名称：</span>
         </label>
         <span class="ui-float-label col-sm-9">
-          <input type="text" pInputText [(ngModel)]="apiName" name="apiName" id="apiName" (blur)="getParamInApiName()">
+          <input type="text" pInputText [(ngModel)]="apiName" name="apiName" id="apiName">
           <label for="apiName">请输入接口名称</label>
         </span>
       </div>
@@ -37,17 +37,20 @@
         </label>
         <p-dropdown class="col-sm-9" [options]="regions" name="region" [(ngModel)]="region" [style]="{'width':'100%'}" (onChange)="changeRegion($event)"></p-dropdown>
       </div>
-      <div class="col-md-12 col-sm-12 col-xs-12 form-group">
-        <label class="col-sm-3 url-label">
-          <span>URL：</span>
-        </label>
-        <span class="ui-float-label col-sm-9">
-          <input type="text" pInputText [(ngModel)]="apiUrl" name="apiUrl" id="apiUrl" (blur)="getParamInApiName()">
-          <label for="apiUrl">请输入URL</label>
-        </span>
-      </div>
       <div class="clear-both"></div>
-      <api-param *ngIf="urlParams?.length!==0" [params]="urlParams"></api-param>
+      <div class="url-and-params-box">
+        <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+          <label class="col-sm-3 url-label">
+            <span>URL：</span>
+          </label>
+          <span class="ui-float-label col-sm-9">
+            <input type="text" pInputText [(ngModel)]="apiUrl" name="apiUrl" id="apiUrl" (blur)="getParamInApiName()">
+            <label for="apiUrl">请输入URL</label>
+          </span>
+        </div>
+        <div class="clear-both"></div>
+        <api-param *ngIf="urlParams?.length!==0" [params]="urlParams"></api-param>
+      </div>
       <div id="headerBodyContent" class="header-body-content">
         <p-tabView #tabView [activeIndex]="activeIndex">
           <p-tabPanel header="Header">
@@ -72,8 +75,8 @@
         <button class="add-button run-api-button pull-left" type="button" (click)="runApi()">运行</button>
       </div>
       <div class="col-md-12 col-sm-12 col-xs-12 form-group text-align-center">
-        <button *ngIf="isShowResponse" class="add-button" type="button">保存</button>&nbsp;&nbsp;
-        <button class="add-button" type="button" [routerLink]="['/apimanage']">返回</button>
+        <button *ngIf="isShowResponse" class="add-button" type="button" [routerLink]="['/apimanage']">保存</button>&nbsp;&nbsp;
+        <button class=" add-button " type="button " [routerLink]="[ '/apimanage'] ">返回</button>
       </div>
       <div class="clear-both"></div>
     </form>

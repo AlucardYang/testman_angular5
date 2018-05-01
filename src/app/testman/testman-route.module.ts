@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'apimanage',
+    redirectTo: 'addcase',
     pathMatch: 'full'
   }, {
     path: 'casemanage',
@@ -15,6 +15,9 @@ export const routes: Routes = [
   }, {
     path: 'addapi',
     loadChildren: './add-api/addapi.module#AddApiModule'
+  }, {
+    path: 'addcase',
+    loadChildren: './add-case/addcase.module#AddCaseModule'
   }
 ];
 
