@@ -6,28 +6,33 @@
   </header>
   <section class="test-case-manage-section">
     <header class="test-case-manage-filter">
-      <span class="select-title">创建人：</span>
+      <span class="select-title">创建人:</span>
       <p-dropdown [options]="cteators" name="cteator" [(ngModel)]="cteator" [style]="{'width':'70px'}" (onChange)="onFilter()"></p-dropdown>
-      &nbsp;
-      <span class="select-title">更新人：</span>
+      <span class="select-title">更新人:</span>
       <p-dropdown [options]="updators" name="updator" [(ngModel)]="updator" [style]="{'width':'70px'}" (onChange)="onFilter()"></p-dropdown>
-      &nbsp;
-      <span class="select-title">域：</span>
-      <p-dropdown [options]="regions" name="region" [(ngModel)]="region" [style]="{'width':'160px'}" (onChange)="onFilter()"></p-dropdown>
-      &nbsp;
+      <span class="select-title">分类:</span>
+      <p-dropdown [options]="sorts" name="sort" [(ngModel)]="sort" [style]="{'width':'90px'}" (onChange)="onFilter()"></p-dropdown>
+      <span class="select-title">状态:</span>
+      <p-dropdown [options]="states" name="state" [(ngModel)]="state" [style]="{'width':'60px'}" (onChange)="onFilter()"></p-dropdown>
       <search-input class="pull-right" [searchText]="searchText" (search)="onSearch($event)"></search-input>
-      &nbsp;
       <p-calendar class="margin-right-40 pull-right" [selectionMode]="'range'" [(ngModel)]="updateDate" dateFormat="yy/mm/dd" showButtonBar="true"
         showIcon="true" placeholder="请选择时间过滤" (onSelect)="onFilter()" (onClearClick)="onClear()"></p-calendar>
     </header>
     <section class="test-case-table">
-      <p-dataTable #dataTable [value]="testApis" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,20]">
+      <p-dataTable #dataTable [value]="testCases" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,20]">
         <p-column [style]="{'width':'30px'}" selectionMode="multiple"></p-column>
         <p-column [style]="{'width':'50px'}" field="num" header="编号">
           <ng-template let-col let-row="rowData" pTemplate="body">
             <span class="table-cell">{{row[col.field]}}</span>
           </ng-template>
         </p-column>
+        <p-column [style]="{'width':'15%'}" field="caseName" header="用例名称">
+            <ng-template let-col let-row="rowData" pTemplate="body">
+              <div class="width-100 over-flow-ellipsis">
+                <span>{{row[col.field]}}</span>
+              </div>
+            </ng-template>
+          </p-column>
         <p-column [style]="{'width':'15%'}" field="apiName" header="接口名称">
           <ng-template let-col let-row="rowData" pTemplate="body">
             <div class="width-100 over-flow-ellipsis">
@@ -35,21 +40,21 @@
             </div>
           </ng-template>
         </p-column>
-        <p-column [style]="{'width':'calc(49% - 180px)'}" field="url" header="URL">
+        <p-column [style]="{'width':'8%'}" field="state" header="用例状态">
+            <ng-template let-col let-row="rowData" pTemplate="body">
+              <div class="width-100 over-flow-ellipsis">
+                <span>{{row[col.field]}}</span>
+              </div>
+            </ng-template>
+          </p-column>
+        <p-column [style]="{'width':'8%'}" field="creator" header="创建人">
           <ng-template let-col let-row="rowData" pTemplate="body">
             <div class="width-100 over-flow-ellipsis">
               <span>{{row[col.field]}}</span>
             </div>
           </ng-template>
         </p-column>
-        <p-column [style]="{'width':'12%'}" field="creator" header="创建人">
-          <ng-template let-col let-row="rowData" pTemplate="body">
-            <div class="width-100 over-flow-ellipsis">
-              <span>{{row[col.field]}}</span>
-            </div>
-          </ng-template>
-        </p-column>
-        <p-column [style]="{'width':'12%'}" field="updator" header="更新人">
+        <p-column [style]="{'width':'8%'}" field="updator" header="更新人">
           <ng-template let-col let-row="rowData" pTemplate="body">
             <div class="width-100 over-flow-ellipsis">
               <span>{{row[col.field]}}</span>
@@ -66,6 +71,7 @@
         <p-column [style]="{'width':'100px'}" header="操作">
           <ng-template let-col let-row="rowData" let-index="rowIndex" pTemplate="body">
             <a href="javascript:void(0);">编辑</a>&nbsp;
+            <a href="javascript:void(0);" class="copy-font">复制</a>&nbsp;
             <a href="javascript:void(0);" class="delete-font" (click)="deleteApi(index)">删除</a>
           </ng-template>
         </p-column>

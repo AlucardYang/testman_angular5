@@ -106,6 +106,10 @@ ol {
   color: #f00 !important;
 }
 
+.copy-font {
+  color: green !important;
+}
+
 .table-cell {
   height: 30px;
   line-height: 30px;

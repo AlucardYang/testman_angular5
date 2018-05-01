@@ -15,10 +15,12 @@ export class CaseManageComponent implements OnInit {
   cteators: SelectItem[];
   updator: any = '全部';
   updators: SelectItem[];
-  region: any = '全部';
-  regions: SelectItem[];
-  testApis: Array<any> = [];
-  allTestApis: Array<any> = [];
+  sort: any = '全部';
+  sorts: SelectItem[];
+  state: any = '全部';
+  states: SelectItem[];
+  testCases: Array<any> = [];
+  allTestCases: Array<any> = [];
   updateDate: Date = new Date();
   searchText: any = '';
   @ViewChild('dataTable') dataTable;
@@ -29,102 +31,109 @@ export class CaseManageComponent implements OnInit {
   ngOnInit() {
     this.cteators = this.testManService.members;
     this.updators = this.testManService.members;
-    this.regions = [
-      { label: '全部', value: '全部' },
-      { label: 'blackpearltest.4009515151.com', value: 'blackpearltest.4009515151.com' },
-      { label: 'www.baidu.com', value: 'www.baidu.com' },
-      { label: 'www.google.com', value: 'www.google.com' },
-      { label: 'www.sina.com', value: 'www.sina.com' }
-    ];
+    this.sorts = this.testManService.sorts;
+    this.states = this.testManService.states;
 
-    this.testApis = [
+    this.testCases = [
       {
         num: 1,
         apiName: '登陆友邻市集',
-        url: 'interfaces/goods/info',
-        region: 'blackpearltest.4009515151.com',
+        caseName: '普通商品详情页获取',
+        sort: '冒烟测试',
+        state: '有效',
         creator: '郑婷婷',
         updator: '黎律',
         updateTime: '2018/03/01'
       }, {
         num: 2,
         apiName: '商家列表接口',
-        url: 'supplier/detail',
-        region: 'www.baidu.com',
+        caseName: '团购商品详情页获取',
+        sort: '功能测试',
+        state: '无效',
         creator: '胡媛洁',
         updator: '许春洋',
         updateTime: '2018/03/15'
       }, {
         num: 3,
         apiName: '登陆友邻市集',
-        url: '/admin/login?request_uri',
-        region: 'www.google.com',
+        caseName: '老用户登陆友邻市集',
+        sort: '回归测试',
+        state: '有效',
         creator: '黎律',
         updator: '许春洋',
         updateTime: '2018/04/15'
       }, {
         num: 4,
         apiName: '购物车',
-        url: '/shop/list',
-        region: 'www.baidu.com',
+        caseName: '购物车用例',
+        sort: '预发布测试',
+        state: '有效',
         creator: '郑婷婷',
         updator: '胡媛洁',
         updateTime: '2018/04/20'
       }, {
         num: 5,
         apiName: '登陆友邻市集1',
-        url: 'interfaces/goods/info',
-        region: 'blackpearltest.4009515151.com',
+        caseName: '普通商品详情页获取1',
+        sort: '预发布测试',
+        state: '有效',
         creator: '许春洋',
         updator: '黎律',
         updateTime: '2018/04/21'
       }, {
         num: 6,
         apiName: '商家列表接口1',
-        url: 'supplier/detail',
-        region: 'www.baidu.com',
+        caseName: '团购商品详情页获取1',
+        sort: '冒烟测试',
+        state: '无效',
         creator: '许春洋',
         updator: '胡媛洁',
         updateTime: '2018/04/23'
       }, {
         num: 7,
         apiName: '登陆友邻市集1',
-        url: '/admin/login?request_uri',
-        region: 'www.google.com',
+        caseName: '老用户登陆友邻市集1',
+        sort: '回归测试',
+        state: '有效',
         creator: '黎律',
         updator: '郑婷婷',
         updateTime: '2018/04/25'
       }, {
         num: 8,
         apiName: '购物车1',
-        url: '/shop/list',
-        region: 'www.sina.com',
+        caseName: '购物车用例1',
+        sort: '预发布测试',
+        state: '有效',
         creator: '郑婷婷',
         updator: '胡媛洁',
         updateTime: '2018/04/30'
       }
     ];
-    this.allTestApis = JSON.parse(JSON.stringify(this.testApis));
+    this.allTestCases = JSON.parse(JSON.stringify(this.testCases));
   }
 
   // 过滤
   onFilter() {
-    let testApis = this.allTestApis;
+    let testCases = this.allTestCases;
     // 选择创建人
     if (this.cteator !== '全部') {
-      testApis = testApis.filter(item => item['creator'] === this.cteator);
+      testCases = testCases.filter(item => item['creator'] === this.cteator);
     }
     // 选择更新人
     if (this.updator !== '全部') {
-      testApis = testApis.filter(item => item['updator'] === this.updator);
+      testCases = testCases.filter(item => item['updator'] === this.updator);
     }
-    // 选择域
-    if (this.region !== '全部') {
-      testApis = testApis.filter(item => item['region'] === this.region);
+    // 选择分类
+    if (this.sort !== '全部') {
+      testCases = testCases.filter(item => item['sort'] === this.sort);
+    }
+    // 选择状态
+    if (this.state !== '全部') {
+      testCases = testCases.filter(item => item['state'] === this.state);
     }
     // 搜索关键字
     if (this.searchText) {
-      testApis = testApis.filter(item => (item['apiName'].indexOf(this.searchText) !== -1) || (item['url'].indexOf(this.searchText) !== -1));
+      testCases = testCases.filter(item => (item['apiName'].indexOf(this.searchText) !== -1) || (item['caseName'].indexOf(this.searchText) !== -1));
     }
     // 选择日期
     if (this.updateDate && (this.updateDate[0] || this.updateDate[1])) {
@@ -132,11 +141,11 @@ export class CaseManageComponent implements OnInit {
       nowDate = new Date().getTime();
       minDate = this.updateDate[0] ? new Date(this.updateDate[0]).getTime() : 0;
       maxDate = this.updateDate[1] ? new Date(this.updateDate[1]).getTime() : nowDate;
-      testApis = testApis.filter(item => (new Date(item['updateTime']).getTime() >= minDate)
+      testCases = testCases.filter(item => (new Date(item['updateTime']).getTime() >= minDate)
         && (new Date(item['updateTime']).getTime() <= maxDate));
     }
-    this.testApis = testApis;
-    this.dataTable.value = testApis;
+    this.testCases = testCases;
+    this.dataTable.value = testCases;
   }
 
   // 搜索
@@ -147,13 +156,13 @@ export class CaseManageComponent implements OnInit {
 
   // 清除时间过滤
   onClear() {
-    this.dataTable.value = this.allTestApis;
+    this.dataTable.value = this.allTestCases;
   }
 
   deleteApi(index) {
-    this.testApis.splice(index, 1);
-    this.dataTable.value = this.testApis;
-    console.log(this.testApis);
+    this.testCases.splice(index, 1);
+    this.dataTable.value = this.testCases;
+    console.log(this.testCases);
   }
 
 }

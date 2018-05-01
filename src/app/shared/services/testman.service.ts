@@ -7,6 +7,8 @@ export class TestManService {
   defaults: SelectItem[];
   apiMethods: SelectItem[];
   members: SelectItem[];
+  sorts: SelectItem[];
+  states: SelectItem[];
   constructor() {
     this.types = [
       { label: 'String', value: 'String' },
@@ -36,24 +38,38 @@ export class TestManService {
       { label: '黎律', value: '黎律' },
       { label: '胡媛洁', value: '胡媛洁' },
       { label: '许春洋', value: '许春洋' }
-  ];
+    ];
+
+    this.sorts = [
+      { label: '全部', value: '全部' },
+      { label: '冒烟测试', value: '冒烟测试' },
+      { label: '功能测试', value: '功能测试' },
+      { label: '回归测试', value: '回归测试' },
+      { label: '预发布测试', value: '预发布测试' }
+    ];
+
+    this.states = [
+      { label: '全部', value: '全部' },
+      { label: '有效', value: '有效' },
+      { label: '无效', value: '无效' }
+    ];
   }
 
   isJSON(str) {
     if (typeof str === 'string') {
-        try {
-            const obj = JSON.parse(str);
-            if (typeof obj === 'object' && obj) {
-                return true;
-            } else {
-                return false;
-            }
-
-        } catch (e) {
-            console.log('error：' + str + '!!!' + e);
-            return false;
+      try {
+        const obj = JSON.parse(str);
+        if (typeof obj === 'object' && obj) {
+          return true;
+        } else {
+          return false;
         }
+
+      } catch (e) {
+        console.log('error：' + str + '!!!' + e);
+        return false;
+      }
     }
     console.log('It is not a string!');
-}
+  }
 }
