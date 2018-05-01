@@ -14,8 +14,10 @@ import { TestManService } from '../services/testman.service';
 export class ApiParamComponent implements OnInit {
   types: SelectItem[];
   defaults: SelectItem[];
+  methods: SelectItem[];
   @Input() params: Array<any> = [];
   @Input() showBorder: Boolean = false;
+  @Input() type: String = 'api';
   constructor(private testManService: TestManService) {
 
   }
@@ -23,6 +25,7 @@ export class ApiParamComponent implements OnInit {
   ngOnInit() {
     this.types = this.testManService.types;
     this.defaults = this.testManService.defaults;
+    this.methods = this.testManService.methods;
   }
 
   // 增删参数

@@ -43,7 +43,7 @@
           </span>
         </div>
         <div class="clear-both"></div>
-        <api-param *ngIf="urlParams?.length!==0" [params]="urlParams"></api-param>
+        <api-param *ngIf="urlParams?.length!==0" [params]="urlParams" [type]="'case'"></api-param>
       </div>
       <div *ngIf="api" id="headerBodyContent" class="header-body-content">
         <p-tabView #tabView [activeIndex]="activeIndex">
@@ -54,30 +54,29 @@
             <div *ngIf="!isShowBodyParam" class="body-param-tip" (click)="isShowBodyParam = true">
               点击此处添加你需要进行参数化的字段，若不添加，则使用接口默认值。
             </div>
-            <api-param *ngIf="isShowBodyParam && bodyParams?.length!==0" [params]="bodyParams" [showBorder]="true"></api-param>
+            <api-param *ngIf="isShowBodyParam && bodyParams?.length!==0" [params]="bodyParams" [showBorder]="true" [type]="'case'"></api-param>
           </p-tabPanel>
           <p-tabPanel header="Response">
             <div *ngIf="!isShowResponseParam" class="body-param-tip" (click)="isShowResponseParam = true">
               点击此处你需要进行校验的字段，若不添加，则默认不对字段值进行校验。
             </div>
-            <api-param *ngIf="isShowResponseParam && ResponseParams?.length!==0" [params]="ResponseParams" [showBorder]="true"></api-param>
+            <api-param *ngIf="isShowResponseParam && ResponseParams?.length!==0" [params]="ResponseParams" [showBorder]="true" [type]="'case'"></api-param>
           </p-tabPanel>
         </p-tabView>
-        <button class="add-button run-case-button" type="button" (click)="runCase()">运行</button>
-      </div>
-      <div class="clear-both"></div>
-      <div *ngIf="isShowResponse" class="run-case-box">
-        <div class="col-md-7 col-sm-7 col-xs-12 form-group padding-left-0">
+        <div class="col-md-7 col-sm-7 col-xs-12 form-group run-environment-position">
           <label class="col-sm-3">
             <span class="require-style">运行环境：</span>
           </label>
           <p-dropdown class="col-sm-9" [options]="runEnvironments" name="runEnvironment" [(ngModel)]="runEnvironment" [style]="{'width':'100%'}"></p-dropdown>
         </div>
-        <div class="col-md-5 col-sm-5 col-xs-12 form-group text-align-right">
-          <button class="add-button margin-top-0" type="button" (click)="getResponse()">运行</button>&nbsp;&nbsp;
-          <button class="add-button margin-top-0" type="button" (click)="resetResult()">关闭</button>
+        <button class="add-button run-case-button" type="button" (click)="getResponse()">运行</button>
+      </div>
+      <div class="clear-both"></div>
+      <div *ngIf="isShowResponse" class="run-case-box">
+        <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+          <button class="add-button margin-top-0 pull-right" type="button" (click)="resetResult()">关闭</button>
+          <div class="clear-both"></div>
         </div>
-        <div class="clear-both"></div>
         <p-tabView #runTabView id="runTabView">
           <p-tabPanel header="发送报文">
             <textarea class="api-textarea" name="expectResponse" id="expectResponse" cols="30" rows="10" [(ngModel)]="expectResponse"></textarea>
@@ -98,7 +97,6 @@
         <button class="add-button" type="button" [routerLink]="['/casemanage']">返回</button>
       </div>
       <div class="clear-both"></div>
-
     </form>
   </section>
 </div>

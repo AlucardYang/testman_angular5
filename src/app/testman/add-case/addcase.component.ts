@@ -48,18 +48,20 @@ export class AddCaseComponent implements OnInit {
     this.bodyParams = [
       {
         name: '',
-        value: '',
         type: 'string',
-        default: '否'
+        default: '是',
+        method: '入参赋值',
+        param: ''
       }
     ];
 
     this.ResponseParams = [
       {
         name: '',
-        value: '',
         type: 'string',
-        default: '否'
+        default: '是',
+        method: '入参赋值',
+        param: ''
       }
     ];
 
@@ -97,7 +99,7 @@ export class AddCaseComponent implements OnInit {
         if (this.urlParams.filter(item => item['name'] === name).length === 0) {
           const obj = new Object();
           obj['name'] = element.slice(1, element.length - 1);
-          obj['value'] = '';
+          obj['param'] = '';
           this.urlParams.push(obj);
         }
       }
@@ -126,16 +128,14 @@ export class AddCaseComponent implements OnInit {
     this.getParamInApiName();
   }
 
-  // 运行用例
-  runCase() {
-    this.isShowResponse = true;
-  }
-
   // 获取返回值
   getResponse() {
+    this.isShowResponse = true;
     this.realResponse = this.expectResponse;
-    this.runTabView.tabs[0].selected = false;
-    this.runTabView.tabs[1].selected = true;
+    setTimeout(() => {
+      this.runTabView.tabs[0].selected = false;
+      this.runTabView.tabs[1].selected = true;
+    });
   }
 
   // 返回运行操作

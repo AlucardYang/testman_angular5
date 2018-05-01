@@ -56,6 +56,12 @@
   padding-left: 15px;
 }
 
+.run-environment-position {
+  position: absolute;
+  top: -15px;
+  right: 50px;
+}
+
 :host ::ng-deep #runTabView .ui-widget-content {
   border: none;
   background: transparent;

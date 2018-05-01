@@ -1,10 +1,16 @@
 <div class="table-content" [ngClass]="{'table-content-border': showBorder}">
   <div class="table-row">
-    <div class="parameter-th parameter-name">字段/变量</div>
+    <div class="parameter-th parameter-name">字段名称</div>
     <div class="parameter-th parameter-type">字段类型</div>
     <div class="parameter-th parameter-type">是否必填</div>
-    <div class="parameter-th parameter-name">默认值</div>
-    <div class="parameter-th parameter-desc">描述</div>
+    <div class="parameter-th parameter-default">
+      <span *ngIf="type==='api'">默认值</span>
+      <span *ngIf="type!=='api'">方法</span>
+    </div>
+    <div class="parameter-th parameter-desc">
+      <span *ngIf="type==='api'">描述</span>
+      <span *ngIf="type!=='api'">参数</span>
+    </div>
     <div class="parameter-th parameter-operation margin-right-0">操作</div>
     <div class="clear-both"></div>
   </div>
@@ -16,8 +22,13 @@
     <div class="parameter-type" [title]="param?.default">
       <p-dropdown [options]="defaults" name="paramDefault{{i}}" [(ngModel)]="param.default" [style]="{'width':'100%','height':'30px'}"></p-dropdown>
     </div>
-    <input class="parameter-td parameter-name" [title]="param?.value" name="paramValue{{i}}" [(ngModel)]="param.value">
-    <input class="parameter-td parameter-desc" [title]="param?.description" name="paramDescription{{i}}" [(ngModel)]="param.description">
+    <input *ngIf="type==='api'" class="parameter-td parameter-default" [title]="param?.value" name="paramValue{{i}}" [(ngModel)]="param.value">
+    <input *ngIf="type==='api'" class="parameter-td parameter-desc" [title]="param?.description" name="paramDescription{{i}}"
+      [(ngModel)]="param.description">
+    <div *ngIf="type!=='api'" class="parameter-default" [title]="param?.method">
+      <p-dropdown [options]="methods" name="paramMethods{{i}}" [(ngModel)]="param.method" [style]="{'width':'100%','height':'30px'}"></p-dropdown>
+    </div>
+    <input *ngIf="type!=='api'" class="parameter-td parameter-desc" [title]="param?.param" name="paramParam{{i}}" [(ngModel)]="param.param">
     <div class="parameter-td parameter-operation margin-right-0">
       <a href="javascript:void(0);" (click)="operateUrlParam('add', i)">添加</a>&nbsp;
       <a href="javascript:void(0);" class="delete-font" (click)="operateUrlParam('delete', i)">删除</a>
