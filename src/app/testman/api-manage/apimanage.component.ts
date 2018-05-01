@@ -145,11 +145,6 @@ export class ApiManageComponent implements OnInit {
     this.onFilter();
   }
 
-  // 清除时间过滤
-  onClear() {
-    this.dataTable.value = this.allTestApis;
-  }
-
   deleteApi(index) {
     this.testApis.splice(index, 1);
     this.dataTable.value = this.testApis;

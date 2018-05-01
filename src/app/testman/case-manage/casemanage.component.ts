@@ -154,12 +154,8 @@ export class CaseManageComponent implements OnInit {
     this.onFilter();
   }
 
-  // 清除时间过滤
-  onClear() {
-    this.dataTable.value = this.allTestCases;
-  }
-
-  deleteApi(index) {
+  // 删除用例
+  deleteCase(index) {
     this.testCases.splice(index, 1);
     this.dataTable.value = this.testCases;
     console.log(this.testCases);

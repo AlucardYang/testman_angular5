@@ -16,7 +16,7 @@
       <p-dropdown [options]="states" name="state" [(ngModel)]="state" [style]="{'width':'60px'}" (onChange)="onFilter()"></p-dropdown>
       <search-input class="pull-right" [searchText]="searchText" (search)="onSearch($event)"></search-input>
       <p-calendar class="margin-right-40 pull-right" [selectionMode]="'range'" [(ngModel)]="updateDate" dateFormat="yy/mm/dd" showButtonBar="true"
-        showIcon="true" placeholder="请选择时间过滤" (onSelect)="onFilter()" (onClearClick)="onClear()"></p-calendar>
+        showIcon="true" placeholder="请选择时间过滤" (onSelect)="onFilter()" (onClearClick)="onFilter()"></p-calendar>
     </header>
     <section class="test-case-table">
       <p-dataTable #dataTable [value]="testCases" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,20]">
@@ -72,7 +72,7 @@
           <ng-template let-col let-row="rowData" let-index="rowIndex" pTemplate="body">
             <a href="javascript:void(0);">编辑</a>&nbsp;
             <a href="javascript:void(0);" class="copy-font">复制</a>&nbsp;
-            <a href="javascript:void(0);" class="delete-font" (click)="deleteApi(index)">删除</a>
+            <a href="javascript:void(0);" class="delete-font" (click)="deleteCase(index)">删除</a>
           </ng-template>
         </p-column>
       </p-dataTable>

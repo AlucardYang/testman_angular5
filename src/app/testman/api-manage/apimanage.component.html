@@ -18,7 +18,7 @@
       <search-input class="pull-right" [searchText]="searchText" (search)="onSearch($event)"></search-input>
       &nbsp;
       <p-calendar class="margin-right-40 pull-right" [selectionMode]="'range'" [(ngModel)]="updateDate" dateFormat="yy/mm/dd" showButtonBar="true"
-        showIcon="true" placeholder="请选择时间过滤" (onSelect)="onFilter()" (onClearClick)="onClear()"></p-calendar>
+        showIcon="true" placeholder="请选择时间过滤" (onSelect)="onFilter()" (onClearClick)="onFilter()"></p-calendar>
     </header>
     <section class="test-case-table">
       <p-dataTable #dataTable [value]="testApis" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,20]">
