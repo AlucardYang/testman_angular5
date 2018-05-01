@@ -75,10 +75,10 @@
         </div>
         <div class="col-md-5 col-sm-5 col-xs-12 form-group text-align-right">
           <button class="add-button margin-top-0" type="button" (click)="getResponse()">运行</button>&nbsp;&nbsp;
-          <button class="add-button margin-top-0" type="button" (click)="resetResult()">返回</button>
+          <button class="add-button margin-top-0" type="button" (click)="resetResult()">关闭</button>
         </div>
         <div class="clear-both"></div>
-        <p-tabView #runTabView>
+        <p-tabView #runTabView id="runTabView">
           <p-tabPanel header="发送报文">
             <textarea class="api-textarea" name="expectResponse" id="expectResponse" cols="30" rows="10" [(ngModel)]="expectResponse"></textarea>
           </p-tabPanel>
