@@ -25,9 +25,7 @@ export class SearchInputComponent implements OnInit {
 
   // 搜索
   onSearch() {
-    if (this.searchText) {
-      this.search.emit(this.searchText);
-    }
+    this.search.emit(this.searchText);
   }
 
   // 清空
