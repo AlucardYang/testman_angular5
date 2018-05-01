@@ -4,6 +4,7 @@ import { SelectItem } from 'primeng/api';
 
 import { TestManService } from '../../shared/services/testman.service';
 import { AddApiService } from './addapi.service';
+import * as $ from 'jquery';
 
 @Component({
   moduleId: module.id,
@@ -96,6 +97,8 @@ export class AddApiComponent implements OnInit {
     this.tabView.tabs[0].selected = false;
     this.tabView.tabs[1].selected = false;
     this.tabView.tabs[2].selected = true;
-    this.router.navigate(['addapi'], { fragment: 'headerBodyContent' });
+    setTimeout(() => {
+      document.documentElement.scrollTop = $('#headerBodyContent').offset().top;
+    });
   }
 }
