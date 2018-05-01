@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 
 import { TestManService } from '../services/testman.service';
@@ -8,7 +8,7 @@ import { TestManService } from '../services/testman.service';
   templateUrl: './jsonlist.component.html',
   styleUrls: ['./jsonlist.component.scss']
 })
-export class JsonListComponent implements OnInit {
+export class JsonListComponent implements OnInit, OnChanges {
   json: any;
   jsons: Array<any> = [];
   types: SelectItem[];
@@ -27,6 +27,12 @@ export class JsonListComponent implements OnInit {
 
     // this.jsonStr = '{"name":"testcase","testcase":[{"num":1,"testCaseName":"老用户登陆友邻市集","apiName":"登陆友邻市集","state":"无效","creator":"郑婷婷","updator":"曾晨","updateTime":""},{"num":2.0,"testCaseName":"团购商品详情页获取","apiName":"商家列表接口","state":"有效","creator":"李四","updator":"曾晨","updateTime":""},{"num":3,"testCaseName":"普通商品详情页获取","apiName":"友邻商品详情接口","state":"无效","creator":"张三","updator":"曾晨","updateTime":""}],"place":{"1":"深圳","2":"广州"}}';
     this.getParam();
+  }
+
+  ngOnChanges(changes) {
+    if (this.jsonStr) {
+      this.getParam();
+    }
   }
 
   // 获取json格式数据key/value值
@@ -127,14 +133,14 @@ export class JsonListComponent implements OnInit {
     this.jsons = [];
     let json = this.jsonStr && this.jsonStr.replace(/\n/g, '');
     // console.log(json);
-    if (this.testManService.isJSON(json)) {
+    if (json && this.testManService.isJSON(json)) {
       json = JSON.parse(json);
       this.getJsonData(json, this.id, this.pid, this.layer);
       this.jsons.forEach(element => {
         element['default'] = '是';
       });
       // console.log(this.jsons);
-    } else {
+    } else if (json) {
       alert('不是json格式');
     }
   }

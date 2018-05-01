@@ -1,5 +1,5 @@
 <textarea class="api-textarea" name="jsonStr" id="jsonStr" cols="30" rows="10" [(ngModel)]="jsonStr" (blur)="getParam()"></textarea>
-<div class="table-content">
+<div *ngIf="jsons?.length !== 0" class="table-content">
   <div class="table-row">
     <div class="parameter-td parameter-name">字段名称</div>
     <div class="parameter-td parameter-type">字段类型</div>

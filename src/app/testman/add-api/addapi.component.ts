@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 
@@ -24,7 +24,9 @@ export class AddApiComponent implements OnInit {
   jsonBody: any;
   jsonResponse: any;
   apiAddress = '12.32.23.23:8080';
-  isShowResponse: Boolean = false;
+  isShowResponse: Boolean = true;
+  activeIndex: Number = 0;
+  @ViewChild('tabView') tabView;
   constructor(private router: Router, private testManService: TestManService,
     private addApiService: AddApiService) {
 
@@ -91,7 +93,9 @@ export class AddApiComponent implements OnInit {
   runApi() {
     this.jsonResponse = '{"code":"0","is_right":"1","result":{"id":"25","name":"固定分类的商家","desc":"固定分类的商家固定分类的商家","contact":"啊哈哈哈","contact_number":"13450367912","city_company":null,"create_time":"2018-01-0810:44:31","icon":"http://odso6i1fb.bkt.clouddn.com/2018/01/08/0ei047yddljuj0tr.png","free_shipping":null},"message":null}';
     this.isShowResponse = true;
-    this.tabType = 'Response';
+    this.tabView.tabs[0].selected = false;
+    this.tabView.tabs[1].selected = false;
+    this.tabView.tabs[2].selected = true;
     this.router.navigate(['addapi'], { fragment: 'headerBodyContent' });
   }
 }

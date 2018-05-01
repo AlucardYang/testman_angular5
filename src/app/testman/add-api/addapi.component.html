@@ -49,14 +49,14 @@
       <div class="clear-both"></div>
       <api-param *ngIf="urlParams?.length!==0" [params]="urlParams"></api-param>
       <div id="headerBodyContent" class="header-body-content">
-        <p-tabView>
-          <p-tabPanel header="Header" [selected]="tabType==='Header'" (onChange)="tabType='Header'">
+        <p-tabView #tabView [activeIndex]="activeIndex">
+          <p-tabPanel header="Header">
             <textarea class="api-textarea" name="jsonHeader" id="jsonHeader" cols="30" rows="10" [(ngModel)]="jsonHeader"></textarea>
           </p-tabPanel>
-          <p-tabPanel header="Body" [selected]="tabType==='Body'" (onChange)="tabType='Body'">
+          <p-tabPanel header="Body">
             <json-list [jsonStr]="jsonBody"></json-list>
           </p-tabPanel>
-          <p-tabPanel *ngIf="isShowResponse" header="Response" [selected]="tabType==='Response'" (onChange)="tabType='Response'">
+          <p-tabPanel header="Response">
             <json-list [jsonStr]="jsonResponse"></json-list>
           </p-tabPanel>
         </p-tabView>
