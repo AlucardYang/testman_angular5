@@ -51,7 +51,7 @@
       <div id="headerBodyContent" class="header-body-content">
         <p-tabView #tabView [activeIndex]="activeIndex">
           <p-tabPanel header="Header">
-            <textarea class="api-textarea" name="jsonHeader" id="jsonHeader" cols="30" rows="10" [(ngModel)]="jsonHeader"></textarea>
+            <header-param [jsonStr]="jsonHeader"></header-param>
           </p-tabPanel>
           <p-tabPanel header="Body">
             <json-list [jsonStr]="jsonBody"></json-list>

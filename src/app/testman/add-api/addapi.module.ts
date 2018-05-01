@@ -7,6 +7,7 @@ import { TabViewModule } from 'primeng/tabview';
 
 import { SharedModule } from '../../../frameworks/shared/index';
 import { ApiParamModule } from '../../shared/api-param/apiparam.module';
+import { HeaderParamModule } from '../../shared/header-param/headerparam.module';
 import { JsonListModule } from '../../shared/json-list/jsonlist.module';
 
 import { AddApiComponent } from './addapi.component';
@@ -19,6 +20,7 @@ import { AddApiService } from './addapi.service';
     TabViewModule,
     SharedModule,
     ApiParamModule,
+    HeaderParamModule,
     JsonListModule,
     RouterModule.forChild([{
       path: '',

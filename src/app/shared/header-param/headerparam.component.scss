@@ -1,0 +1,22 @@
+.table-content {
+  margin: 10px 0;
+}
+
+.parameter-name {
+  width: 25%;
+}
+
+.parameter-method {
+  width: 20%;
+  float: left;
+  margin: 5px 10px 5px 0;
+}
+
+.parameter-param {
+  width: calc(55% - 140px);
+}
+
+.parameter-operation {
+  width: 110px;
+  text-align: center;
+}

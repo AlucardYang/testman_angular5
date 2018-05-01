@@ -9,6 +9,7 @@ export class TestManService {
   members: SelectItem[];
   sorts: SelectItem[];
   states: SelectItem[];
+  methods: SelectItem[];
   constructor() {
     this.types = [
       { label: 'String', value: 'String' },
@@ -52,6 +53,14 @@ export class TestManService {
       { label: '全部', value: '全部' },
       { label: '有效', value: '有效' },
       { label: '无效', value: '无效' }
+    ];
+
+    this.methods = [
+      { label: '入参赋值', value: '入参赋值' },
+      { label: '赋值指定位随机数', value: '赋值指定位随机数' },
+      { label: 'sql语句赋值', value: 'sql语句赋值' },
+      { label: '赋值json', value: '赋值json' },
+      { label: '注入当前时间', value: '注入当前时间' },
     ];
   }
 
